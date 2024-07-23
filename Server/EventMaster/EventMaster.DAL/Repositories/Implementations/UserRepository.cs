@@ -27,20 +27,17 @@ public class UserRepository:IUserRepository
     public async Task CreateAsync(User entity, CancellationToken cancellationToken)
     {
         await _dbContext.Users.AddAsync(entity, cancellationToken);
-        await _dbContext.SaveChangesAsync(cancellationToken);
     }
 
-    public async Task DeleteAsync(User entity, CancellationToken cancellationToken)
+    public void Delete(User entity)
     {
         entity.IsDeleted = true;
         _dbContext.Users.Update(entity);
-        await _dbContext.SaveChangesAsync(cancellationToken);
     }
 
-    public async Task UpdateAsync(User entity, CancellationToken cancellationToken)
+    public void Update(User entity)
     {
         _dbContext.Users.Update(entity);
-        await _dbContext.SaveChangesAsync(cancellationToken);
     }
 
     public async Task<User> GetByLoginAsync(string login, CancellationToken cancellationToken)

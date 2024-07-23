@@ -8,4 +8,5 @@ public interface IEventRepository:IBaseRepository<Event>
     Task<IEnumerable<Event>> GetByDateAsync(DateTime date, CancellationToken cancellationToken);
     Task<IEnumerable<Event>> GetByLocationAsync(string location, CancellationToken cancellationToken);
     Task<IEnumerable<Event>> GetByCategoryIdAsync(Guid categoryId, CancellationToken cancellationToken);
+    void Update(Event entity);
 }

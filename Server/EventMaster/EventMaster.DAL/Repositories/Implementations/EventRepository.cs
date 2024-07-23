@@ -27,20 +27,17 @@ public class EventRepository:IEventRepository
     public async Task CreateAsync(Event entity, CancellationToken cancellationToken)
     {
         await _dbContext.Events.AddAsync(entity, cancellationToken);
-        await _dbContext.SaveChangesAsync(cancellationToken);
     }
 
-    public async Task DeleteAsync(Event entity, CancellationToken cancellationToken)
+    public void Delete(Event entity)
     {
         entity.IsDeleted = true;
         _dbContext.Events.Update(entity);
-        await _dbContext.SaveChangesAsync(cancellationToken);
     }
 
-    public async Task UpdateAsync(Event entity, CancellationToken cancellationToken)
+    public void Update(Event entity)
     {
         _dbContext.Events.Update(entity);
-        await _dbContext.SaveChangesAsync(cancellationToken);
     }
 
     public async Task<Event> GetByNameAsync(string name, CancellationToken cancellationToken)

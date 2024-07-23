@@ -21,28 +21,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bb5a2d7e-1c6d-4ae9-8106-8562e601abf8" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.EventMaster/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.EventMaster/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.EventMaster/.idea/indexLayout.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.EventMaster/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.EventMaster/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.BLL/EventMaster.BLL.csproj" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.BLL/Program.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.BLL/Properties/launchSettings.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.BLL/appsettings.Development.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.BLL/appsettings.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.DAL/EventMaster.DAL.csproj" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.DAL/Program.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.DAL/Properties/launchSettings.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.DAL/appsettings.Development.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.DAL/appsettings.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.Domain/EventMaster.Domain.csproj" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.Domain/Program.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.Domain/Properties/launchSettings.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.Domain/appsettings.Development.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.Domain/appsettings.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.sln" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.sln" afterDir="false" />
+    <list default="true" id="bb5a2d7e-1c6d-4ae9-8106-8562e601abf8" name="Changes" comment="Added entities, repositories, dbcontext">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.EventMaster/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.EventMaster/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EventMaster.DAL/Repositories/Interfaces/IBaseRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.DAL/Repositories/Interfaces/IBaseRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EventMaster.DAL/Repositories/Interfaces/IEventRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.DAL/Repositories/Interfaces/IEventRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EventMaster.DAL/Repositories/Interfaces/IUserRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.DAL/Repositories/Interfaces/IUserRepository.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -273,7 +256,8 @@
       <option name="presentableId" value="Default" />
       <updated>1721425571731</updated>
       <workItem from="1721425573230" duration="2174000" />
-      <workItem from="1721515478315" duration="3725000" />
+      <workItem from="1721515478315" duration="5675000" />
+      <workItem from="1721776981478" duration="334000" />
     </task>
     <task id="LOCAL-00001" summary="Created project structure">
       <option name="closed" value="true" />
@@ -283,7 +267,15 @@
       <option name="project" value="LOCAL" />
       <updated>1721485023659</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Added entities, repositories, dbcontext">
+      <option name="closed" value="true" />
+      <created>1721519857250</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1721519857250</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -293,6 +285,7 @@
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="Created project structure" />
-    <option name="LAST_COMMIT_MESSAGE" value="Created project structure" />
+    <MESSAGE value="Added entities, repositories, dbcontext" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added entities, repositories, dbcontext" />
   </component>
 </project>
