@@ -21,24 +21,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bb5a2d7e-1c6d-4ae9-8106-8562e601abf8" name="Changes" comment="Added UnitOfWork, repositories, updated interfaces">
+    <list default="true" id="bb5a2d7e-1c6d-4ae9-8106-8562e601abf8" name="Changes" comment="Updated enitity, added model, added DTOs, updated repositories">
+      <change afterPath="$PROJECT_DIR$/EventMaster.BLL/DTOs/Responses/Event/GetEventDTO.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.EventMaster/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.EventMaster/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EventMaster.BLL/DTOs/Requests/Event/CreateEventDTO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.BLL/DTOs/Requests/Event/EventDTO.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EventMaster.BLL/DTOs/Responses/Event/EventDTO.cs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/EventMaster.BLL/EventMaster.BLL.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.BLL/EventMaster.BLL.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.DAL/EventMaster.DAL.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.DAL/EventMaster.DAL.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.DAL/Infrastructure/Database/ApplicationDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.DAL/Infrastructure/Database/ApplicationDbContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.DAL/Infrastructure/Database/Configuration/EventCategoryConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.DAL/Infrastructure/Database/Configuration/EventCategoryConfiguration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.DAL/Infrastructure/Database/Configuration/EventConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.DAL/Infrastructure/Database/Configuration/EventConfiguration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.DAL/Infrastructure/Database/Configuration/ParticipantConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.DAL/Infrastructure/Database/Configuration/ParticipantConfiguration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.DAL/Infrastructure/Database/Configuration/RoleConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.DAL/Infrastructure/Database/Configuration/RoleConfiguration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.DAL/Infrastructure/Database/Configuration/UserConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.DAL/Infrastructure/Database/Configuration/UserConfiguration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.DAL/Infrastructure/Database/Configuration/UserRoleConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.DAL/Infrastructure/Database/Configuration/UserRoleConfiguration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.DAL/Repositories/Implementations/EventRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.DAL/Repositories/Implementations/EventRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EventMaster.DAL/Repositories/Implementations/ParticipantRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.DAL/Repositories/Implementations/ParticipantRepository.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/EventMaster.DAL/Repositories/Implementations/RoleRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.DAL/Repositories/Implementations/RoleRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.DAL/Repositories/Interfaces/IEventRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.DAL/Repositories/Interfaces/IEventRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EventMaster.DAL/Repositories/Interfaces/IParticipantRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.DAL/Repositories/Interfaces/IParticipantRepository.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/EventMaster.DAL/Repositories/Interfaces/IRoleRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.DAL/Repositories/Interfaces/IRoleRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.Domain/Entities/Implementations/Event.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.Domain/Entities/Implementations/Event.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.Domain/EventMaster.Domain.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.Domain/EventMaster.Domain.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.Presentation/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.Presentation/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EventMaster.Domain/Entities/Implementations/User.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.Domain/Entities/Implementations/User.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,6 +42,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="mock://C:/AProject/EventMaster/Server/EventMaster/EventMaster.DAL/Infrastructure/Database/ApplicationDbContext.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/AProject/EventMaster/Server/EventMaster/EventMaster.DAL/Repositories/Implementations/EventRepository.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
@@ -273,7 +267,7 @@
       <updated>1721425571731</updated>
       <workItem from="1721425573230" duration="2174000" />
       <workItem from="1721515478315" duration="5675000" />
-      <workItem from="1721776981478" duration="6907000" />
+      <workItem from="1721776981478" duration="10946000" />
     </task>
     <task id="LOCAL-00001" summary="Created project structure">
       <option name="closed" value="true" />
@@ -299,7 +293,15 @@
       <option name="project" value="LOCAL" />
       <updated>1721778550805</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Updated enitity, added model, added DTOs, updated repositories">
+      <option name="closed" value="true" />
+      <created>1721783966919</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1721783966919</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -311,6 +313,7 @@
     <MESSAGE value="Created project structure" />
     <MESSAGE value="Added entities, repositories, dbcontext" />
     <MESSAGE value="Added UnitOfWork, repositories, updated interfaces" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added UnitOfWork, repositories, updated interfaces" />
+    <MESSAGE value="Updated enitity, added model, added DTOs, updated repositories" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated enitity, added model, added DTOs, updated repositories" />
   </component>
 </project>

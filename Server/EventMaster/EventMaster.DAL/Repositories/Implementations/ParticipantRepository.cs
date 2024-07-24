@@ -46,4 +46,11 @@ public class ParticipantRepository:IParticipantRepository
             .Where(p => p.EventId == eventId && !p.IsDeleted)
             .ToListAsync(cancellationToken);
     }
+
+    public async Task<IEnumerable<Participant>> GetByUserId(Guid userId, CancellationToken cancellationToken)
+    {
+        return await _dbContext.Participants
+            .Where(p => p.UserId == userId && !p.IsDeleted)
+            .ToListAsync(cancellationToken);
+    }
 }
