@@ -4,9 +4,7 @@ namespace EventMaster.DAL.Repositories.Interfaces;
 
 public interface IEventRepository:IBaseRepository<Event>
 {
-    Task<Event> GetByNameAsync(string name, CancellationToken cancellationToken);
-    Task<IEnumerable<Event>> GetByDateAsync(DateTime date, CancellationToken cancellationToken);
-    Task<IEnumerable<Event>> GetByLocationAsync(string location, CancellationToken cancellationToken);
-    Task<IEnumerable<Event>> GetByCategoryIdAsync(Guid categoryId, CancellationToken cancellationToken);
+    Task<IEnumerable<Event>> GetByNameAsync(string name, int pageNumber, int pageSize, CancellationToken cancellationToken);
     void Update(Event entity);
+    Task<IQueryable<Event>> GetEventsQueryableAsync(CancellationToken cancellationToken);
 }

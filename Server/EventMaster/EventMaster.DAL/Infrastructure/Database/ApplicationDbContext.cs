@@ -1,4 +1,5 @@
-﻿using EventMaster.Domain.Entities.Implementations;
+﻿using EventMaster.DAL.Infrastructure.Database.Configuration;
+using EventMaster.Domain.Entities.Implementations;
 using Microsoft.EntityFrameworkCore;
 
 namespace EventMaster.DAL.Infrastructure.Database;
@@ -20,5 +21,12 @@ public class ApplicationDbContext:DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
+
+        modelBuilder.ApplyConfiguration(new EventConfiguration());
+        modelBuilder.ApplyConfiguration(new EventCategoryConfiguration());
+        modelBuilder.ApplyConfiguration(new ParticipantConfiguration());
+        modelBuilder.ApplyConfiguration(new RoleConfiguration());
+        modelBuilder.ApplyConfiguration(new UserConfiguration());
+        modelBuilder.ApplyConfiguration(new UserRoleConfiguration()); 
     }
 }

@@ -1,6 +1,7 @@
 ﻿using EventMaster.DAL.Infrastructure.Database;
 using EventMaster.DAL.Repositories.Interfaces;
 using EventMaster.Domain.Entities.Implementations;
+using EventMaster.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace EventMaster.DAL.Repositories.Implementations;
@@ -40,23 +41,19 @@ public class EventRepository:IEventRepository
         _dbContext.Events.Update(entity);
     }
 
-    public async Task<Event> GetByNameAsync(string name, CancellationToken cancellationToken)
+    public async Task<IEnumerable<Event>> GetByNameAsync(string name, int pageNumber, int pageSize, CancellationToken cancellationToken)
     {
-        return await _dbContext.Events.FirstOrDefaultAsync(e => e.Name == name && !e.IsDeleted,cancellationToken);
+        return await _dbContext.Events
+            .Where(e => e.Name.Contains(name) && !e.IsDeleted)
+            .Skip((pageNumber - 1) * pageSize)
+            .Take(pageSize)
+            .ToListAsync(cancellationToken);
     }
 
-    public async Task<IEnumerable<Event>> GetByDateAsync(DateTime date, CancellationToken cancellationToken)
+    
+    public async Task<IQueryable<Event>> GetEventsQueryableAsync(CancellationToken cancellationToken)
     {
-        return await _dbContext.Events.Where(e => e.Date == date && !e.IsDeleted).ToListAsync(cancellationToken);
+        return await Task.FromResult(_dbContext.Events.Where(e => !e.IsDeleted).AsQueryable());
     }
 
-    public async Task<IEnumerable<Event>> GetByLocationAsync(string location, CancellationToken cancellationToken)
-    {
-        return await _dbContext.Events.Where(e => e.Location == location && !e.IsDeleted).ToListAsync(cancellationToken);
-    }
-
-    public async Task<IEnumerable<Event>> GetByCategoryIdAsync(Guid categoryId, CancellationToken cancellationToken)
-    {
-        return await _dbContext.Events.Where(e => e.CategoryId == categoryId && !e.IsDeleted).ToListAsync(cancellationToken);
-    }
 }

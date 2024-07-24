@@ -42,4 +42,9 @@ public class RoleRepository:IRoleRepository
             .Select(ur => ur.Role)
             .ToListAsync(cancellationToken);
     }
+
+    public async Task<bool> CheckHasUserRole(Guid roleId, CancellationToken cancellationToken)
+    {
+        return await _dbContext.UsersRoles.AnyAsync(ur => ur.RoleId == roleId && !ur.IsDeleted,cancellationToken);
+    }
 }
