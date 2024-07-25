@@ -14,17 +14,17 @@ public class ParticipantRepository:IParticipantRepository
         _dbContext = dbContext;
     }
 
-    public async Task<Participant> GetByIdAsync(Guid id, CancellationToken cancellationToken)
+    public async Task<Participant> GetByIdAsync(Guid id, CancellationToken cancellationToken=default)
     {
         return await _dbContext.Participants.FirstOrDefaultAsync(p => p.Id == id && !p.IsDeleted, cancellationToken);
     }
 
-    public async Task<IEnumerable<Participant>> GetAllAsync(CancellationToken cancellationToken)
+    public async Task<IEnumerable<Participant>> GetAllAsync(CancellationToken cancellationToken=default)
     {
         return await _dbContext.Participants.Where(p => !p.IsDeleted).ToListAsync(cancellationToken);
     }
 
-    public async Task CreateAsync(Participant entity, CancellationToken cancellationToken)
+    public async Task CreateAsync(Participant entity, CancellationToken cancellationToken=default)
     {
         await _dbContext.Participants.AddAsync(entity, cancellationToken);
     }
@@ -40,14 +40,14 @@ public class ParticipantRepository:IParticipantRepository
         _dbContext.Participants.Update(entity);
     }
 
-    public async Task<IEnumerable<Participant>> GetByEventIdAsync(Guid eventId, CancellationToken cancellationToken)
+    public async Task<IEnumerable<Participant>> GetByEventIdAsync(Guid eventId, CancellationToken cancellationToken=default)
     {
         return await _dbContext.Participants
             .Where(p => p.EventId == eventId && !p.IsDeleted)
             .ToListAsync(cancellationToken);
     }
 
-    public async Task<IEnumerable<Participant>> GetByUserId(Guid userId, CancellationToken cancellationToken)
+    public async Task<IEnumerable<Participant>> GetByUserId(Guid userId, CancellationToken cancellationToken=default)
     {
         return await _dbContext.Participants
             .Where(p => p.UserId == userId && !p.IsDeleted)

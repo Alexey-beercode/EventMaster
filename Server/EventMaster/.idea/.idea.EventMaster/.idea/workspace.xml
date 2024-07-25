@@ -21,17 +21,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bb5a2d7e-1c6d-4ae9-8106-8562e601abf8" name="Changes" comment="Updated enitity, added model, added DTOs, updated repositories">
-      <change afterPath="$PROJECT_DIR$/EventMaster.BLL/DTOs/Responses/Event/GetEventDTO.cs" afterDir="false" />
+    <list default="true" id="bb5a2d7e-1c6d-4ae9-8106-8562e601abf8" name="Changes" comment="Updated DTOs, repositories, entity, added services interfaces">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.EventMaster/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.EventMaster/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.BLL/DTOs/Requests/Event/CreateEventDTO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.BLL/DTOs/Requests/Event/EventDTO.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.BLL/DTOs/Responses/Event/EventDTO.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EventMaster.BLL/DTOs/Responses/Event/GetEventDTO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.BLL/DTOs/Responses/Event/EventResponseDTO.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/EventMaster.BLL/EventMaster.BLL.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.BLL/EventMaster.BLL.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.DAL/Repositories/Implementations/ParticipantRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.DAL/Repositories/Implementations/ParticipantRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.DAL/Repositories/Implementations/RoleRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.DAL/Repositories/Implementations/RoleRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.DAL/Repositories/Interfaces/IParticipantRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.DAL/Repositories/Interfaces/IParticipantRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.DAL/Repositories/Interfaces/IRoleRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.DAL/Repositories/Interfaces/IRoleRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.Domain/Entities/Implementations/User.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.Domain/Entities/Implementations/User.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EventMaster.BLL/Services/Interfaces/IEventCategoryService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.BLL/Services/Interfaces/IEventCategoryService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EventMaster.BLL/Services/Interfaces/IEventService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.BLL/Services/Interfaces/IEventService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EventMaster.BLL/Services/Interfaces/ITokenService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.BLL/Services/Interfaces/ITokenService.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -267,7 +263,7 @@
       <updated>1721425571731</updated>
       <workItem from="1721425573230" duration="2174000" />
       <workItem from="1721515478315" duration="5675000" />
-      <workItem from="1721776981478" duration="10946000" />
+      <workItem from="1721776981478" duration="12564000" />
     </task>
     <task id="LOCAL-00001" summary="Created project structure">
       <option name="closed" value="true" />
@@ -301,7 +297,15 @@
       <option name="project" value="LOCAL" />
       <updated>1721783966919</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Updated DTOs, repositories, entity, added services interfaces">
+      <option name="closed" value="true" />
+      <created>1721789142887</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1721789142887</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -314,6 +318,7 @@
     <MESSAGE value="Added entities, repositories, dbcontext" />
     <MESSAGE value="Added UnitOfWork, repositories, updated interfaces" />
     <MESSAGE value="Updated enitity, added model, added DTOs, updated repositories" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated enitity, added model, added DTOs, updated repositories" />
+    <MESSAGE value="Updated DTOs, repositories, entity, added services interfaces" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated DTOs, repositories, entity, added services interfaces" />
   </component>
 </project>

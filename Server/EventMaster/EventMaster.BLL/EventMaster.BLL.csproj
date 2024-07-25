@@ -8,15 +8,18 @@
 
     <ItemGroup>
       <Folder Include="Infrastructure\Validators\" />
-      <Folder Include="Services\Implementation\" />
     </ItemGroup>
 
     <ItemGroup>
       <PackageReference Include="AutoMapper" Version="13.0.1" />
+      <PackageReference Include="BCrypt.Net-Core" Version="1.6.0" />
+      <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.7" />
       <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
+      <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\EventMaster.DAL\EventMaster.DAL.csproj" />
       <ProjectReference Include="..\EventMaster.Domain\EventMaster.Domain.csproj" />
     </ItemGroup>
 

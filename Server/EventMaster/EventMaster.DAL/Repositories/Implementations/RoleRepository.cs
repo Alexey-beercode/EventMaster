@@ -14,17 +14,17 @@ public class RoleRepository:IRoleRepository
         _dbContext = dbContext;
     }
 
-    public async Task<Role> GetByIdAsync(Guid id, CancellationToken cancellationToken)
+    public async Task<Role> GetByIdAsync(Guid id, CancellationToken cancellationToken=default)
     {
         return await _dbContext.Roles.FirstOrDefaultAsync(r => r.Id == id && !r.IsDeleted, cancellationToken);
     }
 
-    public async Task<IEnumerable<Role>> GetAllAsync(CancellationToken cancellationToken)
+    public async Task<IEnumerable<Role>> GetAllAsync(CancellationToken cancellationToken=default)
     {
         return await _dbContext.Roles.Where(r => !r.IsDeleted).ToListAsync(cancellationToken);
     }
 
-    public async Task CreateAsync(Role entity, CancellationToken cancellationToken)
+    public async Task CreateAsync(Role entity, CancellationToken cancellationToken=default)
     {
         await _dbContext.Roles.AddAsync(entity, cancellationToken);
     }
@@ -35,7 +35,7 @@ public class RoleRepository:IRoleRepository
         _dbContext.Roles.Update(entity);
     }
 
-    public async Task<IEnumerable<Role>> GetRolesByUserIdAsync(Guid userId, CancellationToken cancellationToken)
+    public async Task<IEnumerable<Role>> GetRolesByUserIdAsync(Guid userId, CancellationToken cancellationToken=default)
     {
         return await _dbContext.UsersRoles
             .Where(ur => ur.UserId == userId && !ur.IsDeleted)
@@ -43,13 +43,48 @@ public class RoleRepository:IRoleRepository
             .ToListAsync(cancellationToken);
     }
 
-    public async Task<bool> CheckHasUserRoleAsync(Guid roleId, CancellationToken cancellationToken)
+    public async Task<bool> CheckHasUserRoleAsync(Guid roleId, CancellationToken cancellationToken=default)
     {
         return await _dbContext.UsersRoles.AnyAsync(ur => ur.RoleId == roleId && !ur.IsDeleted,cancellationToken);
     }
 
-    public async Task SetRoleToUserAsync(UserRole userRole, CancellationToken cancellationToken)
+    public async Task SetRoleToUserAsync(Guid userId, Guid roleId, CancellationToken cancellationToken = default)
     {
+        var user = await _dbContext.Users.FirstOrDefaultAsync(u => u.Id == userId, cancellationToken);
+        var role = await _dbContext.Roles.FirstOrDefaultAsync(r => r.Id == roleId, cancellationToken);
+
+        if (user == null || role == null)
+        {
+            throw new InvalidOperationException("Role or user are not found");
+        }
+
+        var isExists =
+            await _dbContext.UsersRoles.AnyAsync(ur => ur.UserId == userId && ur.RoleId == roleId, cancellationToken);
+        if (isExists)
+        {
+            throw new InvalidOperationException($"This user has role with id : {roleId}");
+        }
+
+        var userRole = new UserRole { UserId = userId, RoleId = roleId };
         await _dbContext.UsersRoles.AddAsync(userRole, cancellationToken);
+    }
+
+    public async Task<Role> GetByNameAsync(string name, CancellationToken cancellationToken = default)
+    {
+        return await _dbContext.Roles.FirstOrDefaultAsync(r => r.Name == name && !r.IsDeleted);
+    }
+
+    public async Task RemoveRoleFromUserAsync(Guid userId, Guid roleId, CancellationToken cancellationToken = default)
+    {
+        var userRole = await _dbContext.UsersRoles
+            .FirstOrDefaultAsync(ur => ur.UserId == userId && ur.RoleId == roleId, cancellationToken);
+
+        if (userRole == null)
+        {
+            throw new InvalidOperationException("User role not found");
+        }
+
+        userRole.IsDeleted = true;
+        _dbContext.UsersRoles.Update(userRole);
     }
 }

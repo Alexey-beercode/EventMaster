@@ -14,17 +14,17 @@ public class EventCategoryRepository:IEventCategoryRepository
         _dbContext = dbContext;
     }
 
-    public async Task<EventCategory> GetByIdAsync(Guid id, CancellationToken cancellationToken)
+    public async Task<EventCategory> GetByIdAsync(Guid id, CancellationToken cancellationToken=default)
     {
         return await _dbContext.EventCategories.FirstOrDefaultAsync(ec => ec.Id == id && !ec.IsDeleted,cancellationToken);
     }
 
-    public async Task<IEnumerable<EventCategory>> GetAllAsync(CancellationToken cancellationToken)
+    public async Task<IEnumerable<EventCategory>> GetAllAsync(CancellationToken cancellationToken=default)
     {
         return await _dbContext.EventCategories.Where(ec => !ec.IsDeleted).ToListAsync(cancellationToken);
     }
 
-    public async Task CreateAsync(EventCategory entity, CancellationToken cancellationToken)
+    public async Task CreateAsync(EventCategory entity, CancellationToken cancellationToken=default)
     {
         await _dbContext.EventCategories.AddAsync(entity, cancellationToken);
     }

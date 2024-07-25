@@ -2,7 +2,7 @@ using EventMaster.Domain.Models;
 
 namespace EventMaster.BLL.DTOs.Responses.Event;
 
-public class GetEventDTO
+public class EventResponseDTO
 {
     public Guid Id { get; set; }
     public string Name { get; set; }

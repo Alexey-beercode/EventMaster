@@ -15,17 +15,17 @@ public class EventRepository:IEventRepository
         _dbContext = dbContext;
     }
 
-    public async Task<Event> GetByIdAsync(Guid id, CancellationToken cancellationToken)
+    public async Task<Event> GetByIdAsync(Guid id, CancellationToken cancellationToken=default)
     {
         return await _dbContext.Events.FirstOrDefaultAsync(e => e.Id == id && !e.IsDeleted,cancellationToken);
     }
 
-    public async Task<IEnumerable<Event>> GetAllAsync(CancellationToken cancellationToken)
+    public async Task<IEnumerable<Event>> GetAllAsync(CancellationToken cancellationToken=default)
     {
         return await _dbContext.Events.Where(e => !e.IsDeleted).ToListAsync(cancellationToken);
     }
 
-    public async Task CreateAsync(Event entity, CancellationToken cancellationToken)
+    public async Task CreateAsync(Event entity, CancellationToken cancellationToken=default)
     {
         await _dbContext.Events.AddAsync(entity, cancellationToken);
     }
@@ -41,7 +41,7 @@ public class EventRepository:IEventRepository
         _dbContext.Events.Update(entity);
     }
 
-    public async Task<IEnumerable<Event>> GetByNameAsync(string name, int pageNumber, int pageSize, CancellationToken cancellationToken)
+    public async Task<IEnumerable<Event>> GetByNameAsync(string name, int pageNumber, int pageSize, CancellationToken cancellationToken=default)
     {
         return await _dbContext.Events
             .Where(e => e.Name.Contains(name) && !e.IsDeleted)
@@ -51,7 +51,7 @@ public class EventRepository:IEventRepository
     }
 
     
-    public async Task<IQueryable<Event>> GetEventsQueryableAsync(CancellationToken cancellationToken)
+    public async Task<IQueryable<Event>> GetEventsQueryableAsync(CancellationToken cancellationToken=default)
     {
         return await Task.FromResult(_dbContext.Events.Where(e => !e.IsDeleted).AsQueryable());
     }
