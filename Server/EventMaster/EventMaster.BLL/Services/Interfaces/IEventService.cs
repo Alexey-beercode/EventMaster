@@ -11,5 +11,6 @@ public interface IEventService
     Task<IEnumerable<EventResponseDTO>> GetAllAsync(CancellationToken cancellationToken);
     Task UpdateAsync(EventDTO eventDto, CancellationToken cancellationToken);
     Task DeleteAsync(Guid eventId, CancellationToken cancellationToken);
-    Task<EventResponseDTO> GetById(Guid eventId, CancellationToken cancellationToken);
+    Task<EventResponseDTO> GetByIdAsync(Guid eventId, CancellationToken cancellationToken);
+
 }
