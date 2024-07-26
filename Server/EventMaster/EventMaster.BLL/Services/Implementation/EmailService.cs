@@ -17,7 +17,7 @@ public class EmailService:IEmailService
         _configuration = configuration;
     }
 
-    public async Task SendEmailAsync(EventUpdateEmail eventUpdateEmail)
+    public async Task SendEmailAsync(EventUpdateEmail eventUpdateEmail,CancellationToken cancellationToken=default)
     {
         var emailMessage = new MimeMessage();
         emailMessage.From.Add(new MailboxAddress("EventMaster", _configuration["Email:SenderAddress"]));
@@ -29,10 +29,10 @@ public class EmailService:IEmailService
 
         using (var client = new SmtpClient())
         {
-            await client.ConnectAsync(_configuration["Email:SmtpServer"], int.Parse(_configuration["Email:SmtpPort"]), false);
-            await client.AuthenticateAsync(_configuration["Email:SmtpUser"], _configuration["Email:SmtpPassword"]);
-            await client.SendAsync(emailMessage);
-            await client.DisconnectAsync(true);
+            await client.ConnectAsync(_configuration["Email:SmtpServer"], int.Parse(_configuration["Email:SmtpPort"]), false,cancellationToken);
+            await client.AuthenticateAsync(_configuration["Email:SmtpUser"], _configuration["Email:SmtpPassword"],cancellationToken);
+            await client.SendAsync(emailMessage,cancellationToken);
+            await client.DisconnectAsync(true,cancellationToken);
         }
     }
 

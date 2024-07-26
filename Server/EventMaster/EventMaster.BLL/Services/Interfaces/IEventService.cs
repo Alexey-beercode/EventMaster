@@ -6,11 +6,11 @@ namespace EventMaster.BLL.Services.Interfaces;
 
 public interface IEventService
 {
-    Task CreateAsync(EventDTO eventDto, CancellationToken cancellationToken);
-    Task<IEnumerable<EventResponseDTO>> GetFilteredEventsAsync(EventFilterDto filter, CancellationToken cancellationToken);
-    Task<IEnumerable<EventResponseDTO>> GetAllAsync(CancellationToken cancellationToken);
-    Task UpdateAsync(EventDTO eventDto, CancellationToken cancellationToken);
-    Task DeleteAsync(Guid eventId, CancellationToken cancellationToken);
-    Task<EventResponseDTO> GetByIdAsync(Guid eventId, CancellationToken cancellationToken);
+    Task CreateAsync(CreateEventDTO createEventDto, CancellationToken cancellationToken=default);
+    Task<IEnumerable<EventResponseDTO>> GetFilteredEventsAsync(EventFilterDto filter, CancellationToken cancellationToken=default);
+    Task<IEnumerable<EventResponseDTO>> GetAllAsync(CancellationToken cancellationToken=default);
+    Task UpdateAsync(UpdateEventDTO updateEventDto, CancellationToken cancellationToken=default);
+    Task DeleteAsync(Guid eventId, CancellationToken cancellationToken=default);
+    Task<EventResponseDTO> GetByIdAsync(Guid eventId, CancellationToken cancellationToken=default);
 
 }

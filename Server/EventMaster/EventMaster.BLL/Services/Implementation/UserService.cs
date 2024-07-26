@@ -25,7 +25,7 @@ public class UserService : IUserService
         _configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
     }
 
-    public async Task<TokenDTO> RegisterAsync(UserDTO userDto, CancellationToken cancellationToken)
+    public async Task<TokenDTO> RegisterAsync(UserDTO userDto, CancellationToken cancellationToken=default)
     {
         var userFromDb = await _unitOfWork.Users.GetByLoginAsync(userDto.Login, cancellationToken);
 
@@ -55,7 +55,7 @@ public class UserService : IUserService
         return new TokenDTO { RefreshToken = refreshToken, AccessToken = accessToken };
     }
 
-    public async Task<TokenDTO> LoginAsync(UserDTO userDto, CancellationToken cancellationToken)
+    public async Task<TokenDTO> LoginAsync(UserDTO userDto, CancellationToken cancellationToken=default)
     {
         var user = await _unitOfWork.Users.GetByLoginAsync(userDto.Login, cancellationToken)
                      ?? throw new AuthorizationException($"User with login: {userDto.Login} does not exist");
@@ -82,7 +82,7 @@ public class UserService : IUserService
         return new TokenDTO { RefreshToken = refreshToken, AccessToken = accessToken };
     }
 
-    public async Task<TokenDTO> RefreshTokenAsync(string refreshToken, CancellationToken cancellationToken)
+    public async Task<TokenDTO> RefreshTokenAsync(string refreshToken, CancellationToken cancellationToken=default)
     {
         var user = await _unitOfWork.Users.GetByRefreshTokenAsync(refreshToken, cancellationToken)
                      ?? throw new EntityNotFoundException("User not found");
@@ -95,7 +95,7 @@ public class UserService : IUserService
         return new TokenDTO { RefreshToken = refreshToken, AccessToken = accessToken };
     }
 
-    public async Task RevokeAsync(Guid userId, CancellationToken cancellationToken)
+    public async Task RevokeAsync(Guid userId, CancellationToken cancellationToken=default)
     {
         var user = await _unitOfWork.Users.GetByIdAsync(userId, cancellationToken)
                    ?? throw new EntityNotFoundException("User", userId);

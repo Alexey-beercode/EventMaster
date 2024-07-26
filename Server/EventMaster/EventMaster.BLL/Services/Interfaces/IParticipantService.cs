@@ -5,8 +5,8 @@ namespace EventMaster.BLL.Services.Interfaces;
 
 public interface IParticipantService
 {
-    Task CreateAsync(CreateParticipantDTO participantDto, CancellationToken cancellationToken);
-    Task DeleteAsync(Guid participantId, CancellationToken cancellationToken);
-    Task<IEnumerable<ParticipantDTO>> GetByEventIdAsync(Guid eventId, CancellationToken cancellationToken);
-    Task<IEnumerable<ParticipantDTO>> GetByUserId(Guid userId, CancellationToken cancellationToken);
+    Task CreateAsync(CreateParticipantDTO participantDto, CancellationToken cancellationToken=default);
+    Task DeleteAsync(Guid participantId, CancellationToken cancellationToken=default);
+    Task<IEnumerable<ParticipantDTO>> GetByEventIdAsync(Guid eventId, CancellationToken cancellationToken=default);
+    Task<IEnumerable<ParticipantDTO>> GetByUserId(Guid userId, CancellationToken cancellationToken=default);
 }

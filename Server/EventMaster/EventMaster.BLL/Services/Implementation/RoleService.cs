@@ -32,11 +32,14 @@ public class RoleService:IRoleService
     public async Task SetRoleToUserAsync(UserRoleDTO userRoleDto, CancellationToken cancellationToken=default)
     {
         await _unitOfWork.Roles.SetRoleToUserAsync(userRoleDto.UserId,userRoleDto.RoleId,cancellationToken);
+        await _unitOfWork.SaveChangesAsync(cancellationToken);
     }
 
     public async Task RemoveRoleFromUserAsync(UserRoleDTO userRoleDto, CancellationToken cancellationToken=default)
     {
         await _unitOfWork.Roles.RemoveRoleFromUserAsync(userRoleDto.UserId, userRoleDto.RoleId, cancellationToken);
+        await _unitOfWork.SaveChangesAsync(cancellationToken);
+
     }
 
     public async Task<IEnumerable<RoleDTO>> GetAllAsync(CancellationToken cancellationToken=default)

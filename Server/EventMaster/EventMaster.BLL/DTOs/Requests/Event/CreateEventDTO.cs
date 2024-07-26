@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Http;
 
 namespace EventMaster.BLL.DTOs.Requests.Event;
 
-public class EventDTO
+public class CreateEventDTO
 {
     public string Name { get; set; }
     public string Description { get; set; }
