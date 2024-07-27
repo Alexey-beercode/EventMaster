@@ -43,7 +43,7 @@ public class RoleRepository:IRoleRepository
             .ToListAsync(cancellationToken);
     }
 
-    public async Task<bool> CheckHasUserRoleAsync(Guid roleId, CancellationToken cancellationToken=default)
+    public async Task<bool> CheckUserHasRoleAsync(Guid roleId, CancellationToken cancellationToken=default)
     {
         return await _dbContext.UsersRoles.AnyAsync(ur => ur.RoleId == roleId && !ur.IsDeleted,cancellationToken);
     }

@@ -1,6 +1,7 @@
 using AutoMapper;
 using EventMaster.BLL.DTOs.Requests.User;
 using EventMaster.BLL.DTOs.Responses.Role;
+using EventMaster.BLL.DTOs.Responses.User;
 using EventMaster.BLL.Exceptions;
 using EventMaster.BLL.Helpers;
 using EventMaster.BLL.Services.Interfaces;
@@ -50,7 +51,7 @@ public class UserService : IUserService
         await _unitOfWork.Roles.SetRoleToUserAsync(user.Id, role.Id, cancellationToken);
         await _unitOfWork.SaveChangesAsync(cancellationToken);
 
-        var claims = _tokenService.CreateClaims(user, _mapper.Map<List<RoleDTO>>(role));
+        var claims = _tokenService.CreateClaims(user, new List<Role>(){role});
         var accessToken = _tokenService.GenerateAccessToken(claims);
         return new TokenDTO { RefreshToken = refreshToken, AccessToken = accessToken };
     }
@@ -76,7 +77,7 @@ public class UserService : IUserService
 
         var rolesByUser = await _unitOfWork.Roles.GetRolesByUserIdAsync(user.Id, cancellationToken);
 
-        var claims = _tokenService.CreateClaims(user, _mapper.Map<List<RoleDTO>>(rolesByUser));
+        var claims = _tokenService.CreateClaims(user, rolesByUser.ToList());
         var accessToken = _tokenService.GenerateAccessToken(claims);
 
         return new TokenDTO { RefreshToken = refreshToken, AccessToken = accessToken };
@@ -89,7 +90,7 @@ public class UserService : IUserService
 
         var rolesByUser = await _unitOfWork.Roles.GetRolesByUserIdAsync(user.Id, cancellationToken);
 
-        var claims = _tokenService.CreateClaims(user, _mapper.Map<List<RoleDTO>>(rolesByUser));
+        var claims = _tokenService.CreateClaims(user, rolesByUser.ToList());
         var accessToken = _tokenService.GenerateAccessToken(claims);
 
         return new TokenDTO { RefreshToken = refreshToken, AccessToken = accessToken };
@@ -105,5 +106,11 @@ public class UserService : IUserService
 
         _unitOfWork.Users.Update(user);
         await _unitOfWork.SaveChangesAsync(cancellationToken);
+    }
+
+    public async Task<IEnumerable<UserResponseDTO>> GetAllAsync(CancellationToken cancellationToken = default)
+    {
+        var users = await _unitOfWork.Users.GetAllAsync(cancellationToken);
+        return _mapper.Map<IEnumerable<UserResponseDTO>>(users);
     }
 }

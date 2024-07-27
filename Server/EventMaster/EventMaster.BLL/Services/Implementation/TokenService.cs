@@ -47,7 +47,7 @@ public class TokenService:ITokenService
         }
     }
 
-    public List<Claim> CreateClaims(User user,List<RoleDTO> roles)
+    public List<Claim> CreateClaims(User user,List<Role> roles)
     {
         var claims = new List<Claim>
         {

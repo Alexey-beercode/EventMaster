@@ -1,4 +1,4 @@
-namespace EventMaster.BLL.DTOs.Requests.User;
+namespace EventMaster.BLL.DTOs.Responses.User;
 
 public class TokenDTO
 {

@@ -24,9 +24,9 @@ public class RoleService:IRoleService
         return _mapper.Map<IEnumerable<RoleDTO>>(rolesByUser);
     }
 
-    public async Task<bool> CheckHasUserRole(Guid roleId, CancellationToken cancellationToken=default)
+    public async Task<bool> CheckUserHasRoleAsync(Guid roleId, CancellationToken cancellationToken=default)
     {
-        return await _unitOfWork.Roles.CheckHasUserRoleAsync(roleId, cancellationToken);
+        return await _unitOfWork.Roles.CheckUserHasRoleAsync(roleId, cancellationToken);
     }
 
     public async Task SetRoleToUserAsync(UserRoleDTO userRoleDto, CancellationToken cancellationToken=default)
