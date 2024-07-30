@@ -33,6 +33,13 @@ namespace EventMaster.DAL.Infrastructure.Database.Configuration
 
             builder.Property(e => e.IsDeleted)
                 .IsRequired();
+            
+            builder.OwnsOne(e => e.Location, location =>
+            {
+                location.Property(l => l.City).IsRequired().HasMaxLength(100);
+                location.Property(l => l.Street).IsRequired().HasMaxLength(100);
+                location.Property(l => l.Building).IsRequired().HasMaxLength(50);
+            });
 
             // Настройка индексов
             builder.HasIndex(e => e.Date);

@@ -21,13 +21,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bb5a2d7e-1c6d-4ae9-8106-8562e601abf8" name="Changes" comment="Updated DTOs, repositories, entity, added services interfaces">
+    <list default="true" id="bb5a2d7e-1c6d-4ae9-8106-8562e601abf8" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.EventMaster/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.EventMaster/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.BLL/DTOs/Responses/Event/GetEventDTO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.BLL/DTOs/Responses/Event/EventResponseDTO.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.BLL/EventMaster.BLL.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.BLL/EventMaster.BLL.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.BLL/Services/Interfaces/IEventCategoryService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.BLL/Services/Interfaces/IEventCategoryService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.BLL/Services/Interfaces/IEventService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.BLL/Services/Interfaces/IEventService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.BLL/Services/Interfaces/ITokenService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.BLL/Services/Interfaces/ITokenService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EventMaster.BLL/Extensions/JwtBearerExtension.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EventMaster.DAL/Extensions/ModelBuilderExtension.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.DAL/Extensions/ModelBuilderExtension.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EventMaster.DAL/Infrastructure/Database/Configuration/EventConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.DAL/Infrastructure/Database/Configuration/EventConfiguration.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EventMaster.Presentation/Extensions/WebApplicationExtension.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.Presentation/Extensions/WebApplicationExtension.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,6 +38,8 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="mock://C:/AProject/EventMaster/Server/EventMaster/EventMaster.DAL/Infrastructure/Database/ApplicationDbContext.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/AProject/EventMaster/Server/EventMaster/EventMaster.DAL/Infrastructure/Database/ApplicationDbContext.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/AProject/EventMaster/Server/EventMaster/EventMaster.DAL/Repositories/Implementations/EventCategoryRepository.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/AProject/EventMaster/Server/EventMaster/EventMaster.DAL/Repositories/Implementations/EventRepository.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
@@ -50,27 +51,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.appearance&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    ".NET Launch Settings Profile.EventMaster: http.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "configurable.group.appearance",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;rider.external.source.directories&quot;: [
-      &quot;C:\\Users\\Алексей\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\DecompilerCache&quot;,
-      &quot;C:\\Users\\Алексей\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\SourcesCache&quot;,
-      &quot;C:\\Users\\Алексей\\AppData\\Local\\Symbols\\src&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
+    ],
+    "rider.external.source.directories": [
+      "C:\\Users\\Алексей\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\DecompilerCache",
+      "C:\\Users\\Алексей\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\SourcesCache",
+      "C:\\Users\\Алексей\\AppData\\Local\\Symbols\\src"
     ]
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected=".NET Launch Settings Profile.EventMaster: http">
     <configuration name="EventMaster: IIS Express" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/EventMaster.Presentation/EventMaster.Presentation.csproj" />
@@ -263,7 +268,8 @@
       <updated>1721425571731</updated>
       <workItem from="1721425573230" duration="2174000" />
       <workItem from="1721515478315" duration="5675000" />
-      <workItem from="1721776981478" duration="12564000" />
+      <workItem from="1721776981478" duration="44138000" />
+      <workItem from="1722185008588" duration="5378000" />
     </task>
     <task id="LOCAL-00001" summary="Created project structure">
       <option name="closed" value="true" />
@@ -305,7 +311,39 @@
       <option name="project" value="LOCAL" />
       <updated>1721789142887</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Added exceptions, updated services interfaces, added services, added dto, updated repository">
+      <option name="closed" value="true" />
+      <created>1721881149620</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1721881149620</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Added services, updated interfaces, added email rendering and configuration, added EmailService">
+      <option name="closed" value="true" />
+      <created>1721883748262</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1721883748262</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Updated interfaces, added DTO, implemented service">
+      <option name="closed" value="true" />
+      <created>1721970378322</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1721970378322</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Updated dbcontext, updated serveses, interfaces, added controllers and configuration">
+      <option name="closed" value="true" />
+      <created>1722121800436</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1722121800436</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -319,6 +357,10 @@
     <MESSAGE value="Added UnitOfWork, repositories, updated interfaces" />
     <MESSAGE value="Updated enitity, added model, added DTOs, updated repositories" />
     <MESSAGE value="Updated DTOs, repositories, entity, added services interfaces" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated DTOs, repositories, entity, added services interfaces" />
+    <MESSAGE value="Added exceptions, updated services interfaces, added services, added dto, updated repository" />
+    <MESSAGE value="Added services, updated interfaces, added email rendering and configuration, added EmailService" />
+    <MESSAGE value="Updated interfaces, added DTO, implemented service" />
+    <MESSAGE value="Updated dbcontext, updated serveses, interfaces, added controllers and configuration" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated dbcontext, updated serveses, interfaces, added controllers and configuration" />
   </component>
 </project>

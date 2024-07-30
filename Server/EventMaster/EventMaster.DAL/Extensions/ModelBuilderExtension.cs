@@ -21,7 +21,9 @@ public static class ModelBuilderExtension
             Id = adminId,
             Login = "Admin",
             IsDeleted = false,
-            PasswordHash = BCrypt.Net.BCrypt.HashPassword(adminPassword)
+            PasswordHash = BCrypt.Net.BCrypt.HashPassword(adminPassword),
+            RefreshToken = "",
+            RefreshTokenExpiryTime = DateTime.MinValue
         };
         modelBuilder.Entity<Role>().HasData(adminRole);
         modelBuilder.Entity<User>().HasData(adminUser);
@@ -36,8 +38,6 @@ public static class ModelBuilderExtension
         {
             Id = Guid.NewGuid(),
             IsDeleted = false,
-            Role = adminRole,
-            User = adminUser,
             RoleId = adminRoleId,
             UserId = adminId
         });

@@ -18,7 +18,6 @@ public static class WebApplicationExtension
         {
             builder.WithOrigins("https://localhost:44315") 
                 .AllowAnyMethod()
-                .AllowAnyOrigin()
                 .AllowAnyHeader()
                 .AllowCredentials();
         }); 

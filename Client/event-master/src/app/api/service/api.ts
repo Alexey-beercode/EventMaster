@@ -1,0 +1,13 @@
+export * from './auth.service';
+import { AuthService } from './auth.service';
+export * from './event.service';
+import { EventService } from './event.service';
+export * from './eventCategory.service';
+import { EventCategoryService } from './eventCategory.service';
+export * from './participant.service';
+import { ParticipantService } from './participant.service';
+export * from './role.service';
+import { RoleService } from './role.service';
+export * from './user.service';
+import { UserService } from './user.service';
+export const APIS = [AuthService, EventService, EventCategoryService, ParticipantService, RoleService, UserService];
