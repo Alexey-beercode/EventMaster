@@ -1,5 +1,6 @@
 using EventMaster.BLL.DTOs.Requests.UserRole;
 using EventMaster.BLL.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EventMaster.Controllers;
@@ -14,6 +15,7 @@ public class RoleController:Controller
         _roleService = roleService;
     }
 
+    [Authorize(Policy = "AdminArea")]
     [HttpGet("getAll")]
     public async Task<IActionResult> GetAllAsync(CancellationToken cancellationToken = default)
     {
@@ -21,6 +23,7 @@ public class RoleController:Controller
         return Ok(roles);
     }
 
+    [Authorize(Policy = "AdminArea")]
     [HttpPut("setRoleToUser")]
     public async Task<IActionResult> SetRoleToUserAsync([FromBody] UserRoleDTO userRoleDto,
         CancellationToken cancellationToken = default)
@@ -29,6 +32,7 @@ public class RoleController:Controller
         return Ok();
     }
 
+    [Authorize(Policy = "AdminArea")]
     [HttpPut("removeRoleFromUser")]
     public async Task<IActionResult> RemoveRoleFromUserAsync([FromBody] UserRoleDTO userRoleDto,
         CancellationToken cancellationToken = default)
@@ -37,6 +41,7 @@ public class RoleController:Controller
         return Ok();
     }
 
+    [Authorize(Policy = "AdminArea")]
     [HttpGet("getRolesByUser/{userId}")]
     public async Task<IActionResult> GetRolesByUserIdAsync(Guid userId, CancellationToken cancellationToken = default)
     {

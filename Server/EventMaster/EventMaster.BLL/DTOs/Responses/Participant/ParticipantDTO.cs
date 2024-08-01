@@ -1,3 +1,5 @@
+using EventMaster.BLL.DTOs.Responses.Event;
+
 namespace EventMaster.BLL.DTOs.Responses.Participant;
 
 public class ParticipantDTO
@@ -9,5 +11,5 @@ public class ParticipantDTO
     public DateTime RegistrationDate { get; set; }
     public string Email { get; set; }
     public Guid UserId { get; set; }
-    public Domain.Entities.Implementations.Event Event { get; set; }
+    public EventResponseDTO Event { get; set; }
 }

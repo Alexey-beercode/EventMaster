@@ -8,5 +8,5 @@ public interface IParticipantService
     Task CreateAsync(CreateParticipantDTO participantDto, CancellationToken cancellationToken=default);
     Task DeleteAsync(Guid participantId, CancellationToken cancellationToken=default);
     Task<IEnumerable<ParticipantDTO>> GetByEventIdAsync(Guid eventId, CancellationToken cancellationToken=default);
-    Task<IEnumerable<ParticipantDTO>> GetByUserId(Guid userId, CancellationToken cancellationToken=default);
+    Task<IEnumerable<ParticipantDTO>> GetByUserIdAsync(Guid userId, CancellationToken cancellationToken=default);
 }

@@ -1,3 +1,5 @@
+using EventMaster.Middleware;
+
 namespace EventMaster.Extensions;
 
 public static class WebApplicationExtension
@@ -25,5 +27,6 @@ public static class WebApplicationExtension
         app.UseAuthentication();
         app.UseAuthorization();
         app.MapControllers();
+        app.UseMiddleware<ExceptionHandlingMiddleware>();
     }
 }

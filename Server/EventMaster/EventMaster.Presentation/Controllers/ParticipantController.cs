@@ -35,7 +35,7 @@ public class ParticipantController:Controller
     [HttpGet("getByUser/{userId}")]
     public async Task<IActionResult> GetByUserIdAsync(Guid userId, CancellationToken cancellationToken = default)
     {
-        var participantByUserId = await _participantService.GetByUserId(userId, cancellationToken);
+        var participantByUserId = await _participantService.GetByUserIdAsync(userId, cancellationToken);
         return Ok(participantByUserId);
     }
 
