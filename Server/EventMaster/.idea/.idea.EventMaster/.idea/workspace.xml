@@ -21,18 +21,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bb5a2d7e-1c6d-4ae9-8106-8562e601abf8" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../../Client/event-master/src/app/api/model/createEventDTO.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../Client/event-master/src/app/api/model/createEventDTO.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Client/event-master/src/app/api/model/createParticipantDTO.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../Client/event-master/src/app/api/model/createParticipantDTO.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Client/event-master/src/app/api/model/eventFilterDto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../Client/event-master/src/app/api/model/eventFilterDto.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Client/event-master/src/app/api/model/location.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../Client/event-master/src/app/api/model/location.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Client/event-master/src/app/api/model/updateEventDTO.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../Client/event-master/src/app/api/model/updateEventDTO.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Client/event-master/src/app/api/model/userDTO.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../Client/event-master/src/app/api/model/userDTO.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Client/event-master/src/app/api/model/userRoleDTO.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../Client/event-master/src/app/api/model/userRoleDTO.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.EventMaster/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.EventMaster/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.BLL/DTOs/Requests/Event/CreateEventDTO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.BLL/DTOs/Requests/Event/CreateEventDTO.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.Presentation/Extensions/WebApplicationExtension.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.Presentation/Extensions/WebApplicationExtension.cs" afterDir="false" />
-    </list>
+    <list default="true" id="bb5a2d7e-1c6d-4ae9-8106-8562e601abf8" name="Changes" comment="Updated DTO, added mapping profiles, added exception handler" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -42,10 +31,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock://C:/AProject/EventMaster/Server/EventMaster/EventMaster.DAL/Infrastructure/Database/ApplicationDbContext.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/AProject/EventMaster/Server/EventMaster/EventMaster.DAL/Infrastructure/Database/ApplicationDbContext.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/AProject/EventMaster/Server/EventMaster/EventMaster.DAL/Repositories/Implementations/EventCategoryRepository.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/AProject/EventMaster/Server/EventMaster/EventMaster.DAL/Repositories/Implementations/EventRepository.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/AProject/EventMaster/Server/EventMaster/EventMaster.BLL/DTOs/Requests/Event/CreateEventDTO.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
@@ -274,7 +260,7 @@
       <workItem from="1721425573230" duration="2174000" />
       <workItem from="1721515478315" duration="5675000" />
       <workItem from="1721776981478" duration="44138000" />
-      <workItem from="1722185008588" duration="9849000" />
+      <workItem from="1722185008588" duration="13813000" />
     </task>
     <task id="LOCAL-00001" summary="Created project structure">
       <option name="closed" value="true" />
@@ -348,7 +334,15 @@
       <option name="project" value="LOCAL" />
       <updated>1722121800436</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Updated DTO, added mapping profiles, added exception handler">
+      <option name="closed" value="true" />
+      <created>1722552272026</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1722552272026</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -366,6 +360,7 @@
     <MESSAGE value="Added services, updated interfaces, added email rendering and configuration, added EmailService" />
     <MESSAGE value="Updated interfaces, added DTO, implemented service" />
     <MESSAGE value="Updated dbcontext, updated serveses, interfaces, added controllers and configuration" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated dbcontext, updated serveses, interfaces, added controllers and configuration" />
+    <MESSAGE value="Updated DTO, added mapping profiles, added exception handler" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated DTO, added mapping profiles, added exception handler" />
   </component>
 </project>

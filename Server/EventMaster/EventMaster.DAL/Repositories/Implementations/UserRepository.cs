@@ -40,7 +40,7 @@ public class UserRepository:IUserRepository
         _dbContext.Users.Update(entity);
     }
 
-    public async Task<User> GetByRefreshTokenAsync(string refreshToken, CancellationToken cancellationToken)
+    public async Task<User> GetByRefreshTokenAsync(string refreshToken, CancellationToken cancellationToken=default)
     {
         return await _dbContext.Users
             .FirstOrDefaultAsync(u => u.RefreshToken == refreshToken && !u.IsDeleted && u.RefreshTokenExpiryTime > DateTime.Now);

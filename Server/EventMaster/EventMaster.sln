@@ -8,6 +8,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventMaster.Domain", "Event
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventMaster.BLL", "EventMaster.BLL\EventMaster.BLL.csproj", "{D0A1D242-6D15-4EAF-9C54-47DB17DB785E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventMaster.Tests", "EventMaster.Tests\EventMaster.Tests.csproj", "{44B06114-9164-45BE-8D07-EEAFF0E890F0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,9 @@ Global
 		{D0A1D242-6D15-4EAF-9C54-47DB17DB785E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D0A1D242-6D15-4EAF-9C54-47DB17DB785E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D0A1D242-6D15-4EAF-9C54-47DB17DB785E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44B06114-9164-45BE-8D07-EEAFF0E890F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44B06114-9164-45BE-8D07-EEAFF0E890F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44B06114-9164-45BE-8D07-EEAFF0E890F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44B06114-9164-45BE-8D07-EEAFF0E890F0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
