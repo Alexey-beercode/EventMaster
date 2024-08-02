@@ -1,11 +1,7 @@
-using System;
-using System.Linq;
-using System.Threading.Tasks;
 using EventMaster.DAL.Infrastructure.Database;
 using EventMaster.DAL.Repositories.Implementations;
 using EventMaster.Domain.Entities.Implementations;
 using Microsoft.EntityFrameworkCore;
-using Xunit;
 using FluentAssertions;
 
 public class EventRepositoryTests

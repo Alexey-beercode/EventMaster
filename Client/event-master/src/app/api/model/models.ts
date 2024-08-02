@@ -5,3 +5,6 @@ export * from './location';
 export * from './updateEventDTO';
 export * from './userDTO';
 export * from './userRoleDTO';
+export * from './eventResponseDTO';
+export * from './eventCategoryDTO';
+export * from './tokenDTO';

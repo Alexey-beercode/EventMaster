@@ -1,7 +1,7 @@
 import { Location } from './location';
 
 
-export interface EventFilterDto {
+export interface EventFilterDTO {
     name?: string | null;
     date?: string | null;
     location?: Location;

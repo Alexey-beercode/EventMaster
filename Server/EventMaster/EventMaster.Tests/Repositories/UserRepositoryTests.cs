@@ -1,14 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 using EventMaster.DAL.Infrastructure.Database;
 using EventMaster.DAL.Repositories.Implementations;
 using EventMaster.Domain.Entities.Implementations;
 using FluentAssertions;
 using Microsoft.EntityFrameworkCore;
-using Xunit;
 
 public class UserRepositoryTests
 {
@@ -34,7 +28,7 @@ public class UserRepositoryTests
                 Login = "testuser",
                 PasswordHash = "hashedpassword",
                 RefreshToken = "somerandomrefreshtoken",
-                RefreshTokenExpiryTime = DateTime.Now.AddDays(1),  // Set expiry time to a future date
+                RefreshTokenExpiryTime = DateTime.Now.AddDays(1), 
                 IsDeleted = false
             };
             context.Users.Add(user);
@@ -217,7 +211,7 @@ public class UserRepositoryTests
                 Login = "expiredtokenuser",
                 PasswordHash = "expiredhash",
                 RefreshToken = "expiredtoken",
-                RefreshTokenExpiryTime = DateTime.Now.AddDays(-1), // Expired token
+                RefreshTokenExpiryTime = DateTime.Now.AddDays(-1), 
                 IsDeleted = false
             };
             context.Users.Add(user);

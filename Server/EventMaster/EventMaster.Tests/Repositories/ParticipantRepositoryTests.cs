@@ -1,14 +1,7 @@
-
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 using EventMaster.DAL.Infrastructure.Database;
 using EventMaster.DAL.Repositories.Implementations;
 using EventMaster.Domain.Entities.Implementations;
 using Microsoft.EntityFrameworkCore;
-using Xunit;
 using FluentAssertions;
 
 public class ParticipantRepositoryTests
@@ -259,7 +252,7 @@ public class ParticipantRepositoryTests
                 RegistrationDate = DateTime.Now,
                 Email = "part3@example.com",
                 UserId = Guid.NewGuid(),
-                EventId = Guid.NewGuid(), // Different event
+                EventId = Guid.NewGuid(),
                 IsDeleted = false
             };
 
@@ -314,7 +307,7 @@ public class ParticipantRepositoryTests
                 BirthDate = new DateTime(1987, 1, 1),
                 RegistrationDate = DateTime.Now,
                 Email = "part3@example.com",
-                UserId = Guid.NewGuid(), // Different user
+                UserId = Guid.NewGuid(), 
                 EventId = Guid.NewGuid(),
                 IsDeleted = false
             };
@@ -347,7 +340,7 @@ public class ParticipantRepositoryTests
                 RegistrationDate = DateTime.Now,
                 Email = "participant@example.com",
                 UserId = Guid.NewGuid(),
-                EventId = Guid.NewGuid(), // Different event
+                EventId = Guid.NewGuid(), 
                 IsDeleted = false
             };
 
@@ -376,7 +369,7 @@ public class ParticipantRepositoryTests
                 BirthDate = new DateTime(1995, 6, 1),
                 RegistrationDate = DateTime.Now,
                 Email = "participant@example.com",
-                UserId = Guid.NewGuid(), // Different user
+                UserId = Guid.NewGuid(), 
                 EventId = Guid.NewGuid(),
                 IsDeleted = false
             };
