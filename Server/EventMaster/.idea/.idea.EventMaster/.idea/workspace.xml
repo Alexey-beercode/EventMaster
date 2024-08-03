@@ -21,7 +21,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bb5a2d7e-1c6d-4ae9-8106-8562e601abf8" name="Changes" comment="Updated DTO, added mapping profiles, added exception handler" />
+    <list default="true" id="bb5a2d7e-1c6d-4ae9-8106-8562e601abf8" name="Changes" comment="Updated DTO, added mapping profiles, added exception handler">
+      <change beforePath="$PROJECT_DIR$/../../Client/event-master/src/app/api/api.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Client/event-master/src/app/api/configuration.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Client/event-master/src/app/api/encoder.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Client/event-master/src/app/api/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../Client/event-master/src/app/api/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Client/event-master/src/app/api/param.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Client/event-master/src/app/api/service/role.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../Client/event-master/src/app/api/service/role.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Client/event-master/src/app/api/service/user.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../Client/event-master/src/app/api/service/user.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Client/event-master/src/app/api/variables.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.EventMaster/.idea/dataSources/ac11fea3-3f78-48c2-9a13-ad28a88d84c3.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.EventMaster/.idea/dataSources/ac11fea3-3f78-48c2-9a13-ad28a88d84c3.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.EventMaster/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.EventMaster/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EventMaster.BLL/Services/Implementation/TokenService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.BLL/Services/Implementation/TokenService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EventMaster.Presentation/Extensions/WebApplicationExtension.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.Presentation/Extensions/WebApplicationExtension.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EventMaster.Presentation/Middleware/ExceptionHandlingMiddleware.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.Presentation/Middleware/ExceptionHandlingMiddleware.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -42,31 +56,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    ".NET Launch Settings Profile.EventMaster: http.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "configurable.group.appearance",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;.NET Launch Settings Profile.EventMaster: http.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.appearance&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "postgresql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
     ],
-    "rider.external.source.directories": [
-      "C:\\Users\\Алексей\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\DecompilerCache",
-      "C:\\Users\\Алексей\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\SourcesCache",
-      "C:\\Users\\Алексей\\AppData\\Local\\Symbols\\src"
+    &quot;rider.external.source.directories&quot;: [
+      &quot;C:\\Users\\Алексей\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\DecompilerCache&quot;,
+      &quot;C:\\Users\\Алексей\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\SourcesCache&quot;,
+      &quot;C:\\Users\\Алексей\\AppData\\Local\\Symbols\\src&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected=".NET Launch Settings Profile.EventMaster: http">
     <configuration name="EventMaster: IIS Express" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/EventMaster.Presentation/EventMaster.Presentation.csproj" />
@@ -261,6 +275,7 @@
       <workItem from="1721515478315" duration="5675000" />
       <workItem from="1721776981478" duration="44138000" />
       <workItem from="1722185008588" duration="13813000" />
+      <workItem from="1722642880978" duration="1979000" />
     </task>
     <task id="LOCAL-00001" summary="Created project structure">
       <option name="closed" value="true" />

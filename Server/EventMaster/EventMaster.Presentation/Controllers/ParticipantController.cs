@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace EventMaster.Controllers;
 
+[Authorize]
 [Route("api/participant")]
 public class ParticipantController:Controller
 {
@@ -15,31 +16,21 @@ public class ParticipantController:Controller
         _participantService = participantService;
     }
 
-    [Authorize]
+  
     [HttpPost("create")]
     public async Task<IActionResult> CreateAsync([FromBody] CreateParticipantDTO participantDto,CancellationToken cancellationToken=default)
     {
         await _participantService.CreateAsync(participantDto, cancellationToken);
         return Ok();
     }
-
-    [Authorize(Policy = "AdminArea")]
-    [HttpGet("getByEvent/{eventId}")]
-    public async Task<IActionResult> GetByEventIdAsync(Guid eventId, CancellationToken cancellationToken = default)
-    {
-        var participantsByEventId = await _participantService.GetByEventIdAsync(eventId, cancellationToken);
-        return Ok(participantsByEventId);
-    }
-
-    [Authorize]
+    
     [HttpGet("getByUser/{userId}")]
     public async Task<IActionResult> GetByUserIdAsync(Guid userId, CancellationToken cancellationToken = default)
     {
         var participantByUserId = await _participantService.GetByUserIdAsync(userId, cancellationToken);
         return Ok(participantByUserId);
     }
-
-    [Authorize]
+    
     [HttpDelete("delete/{id}")]
     public async Task<IActionResult> DeleteAsync(Guid id, CancellationToken cancellationToken = default)
     {

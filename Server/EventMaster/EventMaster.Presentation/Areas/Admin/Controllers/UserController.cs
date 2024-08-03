@@ -2,9 +2,10 @@ using EventMaster.BLL.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace EventMaster.Controllers;
+namespace EventMaster.Areas.Admin.Controllers;
 
-[Route("api/user")]
+[Route("api/admin/user")]
+[Authorize(Policy = "AdminArea")]
 public class UserController:Controller
 {
     private readonly IUserService _userService;
@@ -13,8 +14,7 @@ public class UserController:Controller
     {
         _userService = userService;
     }
-
-    [Authorize(Policy = "AdminArea")]
+    
     [HttpGet("getAll")]
     public async Task<IActionResult> GetAllAsync(CancellationToken cancellationToken)
     {

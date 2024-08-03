@@ -35,22 +35,22 @@ public class ExceptionHandlingMiddleware
 
         switch (exception)
         {
-            case EntityNotFoundException entityNotFoundException:
+            case EntityNotFoundException:
                 response.StatusCode = (int)HttpStatusCode.NotFound;
                 break;
-            case FormatException formatException:
+            case FormatException:
                 response.StatusCode = (int)HttpStatusCode.BadRequest;
                 break;
-            case ValidationException validationException:
+            case ValidationException:
                 response.StatusCode = (int)HttpStatusCode.BadRequest;
                 break;
-            case UnauthorizedAccessException unauthorizedAccessException:
+            case UnauthorizedAccessException:
                 response.StatusCode = (int)HttpStatusCode.Unauthorized;
                 break;
-            case AuthenticationException authenticationException:
+            case AuthenticationException:
                 response.StatusCode = (int)HttpStatusCode.Unauthorized;
                 break;
-            case AuthorizationException authorizationException:
+            case AuthorizationException:
                 response.StatusCode = (int)HttpStatusCode.Unauthorized;
                 break;
             default:

@@ -47,14 +47,16 @@ public class TokenService:ITokenService
         }
     }
 
-    public List<Claim> CreateClaims(User user,List<Role> roles)
+    public List<Claim> CreateClaims(User user, List<Role> roles)
     {
         var claims = new List<Claim>
         {
             new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
             new Claim(ClaimTypes.Name, user.Login),
-            new Claim("roles", JsonConvert.SerializeObject(roles.Select(r => r.Name).ToList()))
         };
+
+        claims.AddRange(roles.Select(role => new Claim(ClaimTypes.Role, role.Name)));
         return claims;
     }
+
 }

@@ -3,9 +3,11 @@ using EventMaster.BLL.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace EventMaster.Controllers;
+namespace EventMaster.Areas.Admin.Controllers;
 
-[Route("api/role")]
+
+[Route("api/admin/role")]
+[Authorize(Policy = "AdminArea")]
 public class RoleController:Controller
 {
     private IRoleService _roleService;
@@ -15,15 +17,14 @@ public class RoleController:Controller
         _roleService = roleService;
     }
 
-    [Authorize(Policy = "AdminArea")]
+    
     [HttpGet("getAll")]
     public async Task<IActionResult> GetAllAsync(CancellationToken cancellationToken = default)
     {
         var roles = await _roleService.GetAllAsync(cancellationToken);
         return Ok(roles);
     }
-
-    [Authorize(Policy = "AdminArea")]
+    
     [HttpPut("setRoleToUser")]
     public async Task<IActionResult> SetRoleToUserAsync([FromBody] UserRoleDTO userRoleDto,
         CancellationToken cancellationToken = default)
@@ -31,8 +32,7 @@ public class RoleController:Controller
         await _roleService.SetRoleToUserAsync(userRoleDto, cancellationToken);
         return Ok();
     }
-
-    [Authorize(Policy = "AdminArea")]
+    
     [HttpPut("removeRoleFromUser")]
     public async Task<IActionResult> RemoveRoleFromUserAsync([FromBody] UserRoleDTO userRoleDto,
         CancellationToken cancellationToken = default)
@@ -40,8 +40,7 @@ public class RoleController:Controller
         await _roleService.RemoveRoleFromUserAsync(userRoleDto, cancellationToken);
         return Ok();
     }
-
-    [Authorize(Policy = "AdminArea")]
+    
     [HttpGet("getRolesByUser/{userId}")]
     public async Task<IActionResult> GetRolesByUserIdAsync(Guid userId, CancellationToken cancellationToken = default)
     {

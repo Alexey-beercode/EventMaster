@@ -15,23 +15,6 @@ public class EventController:Controller
         _eventService = eventService;
     }
 
-    [Authorize(Policy = "AdminArea")]
-    [HttpPost("create")]
-    public async Task<IActionResult> CreateAsync([FromBody] CreateEventDTO createEventDto,
-        CancellationToken cancellationToken = default)
-    {
-        await _eventService.CreateAsync(createEventDto, cancellationToken);
-        return Ok();
-    }
-    
-    [Authorize(Policy = "AdminArea")]
-    [HttpPut("update")]
-    public async Task<IActionResult> UpdateAsync([FromBody] UpdateEventDTO updateEventDto,CancellationToken cancellationToken=default)
-    {
-        await _eventService.UpdateAsync(updateEventDto,cancellationToken);
-        return Ok();
-    }
-
     [HttpGet("getByParams")]
     public async Task<IActionResult> GetByParamsAsync([FromBody] EventFilterDto eventFilterDto, CancellationToken cancellationToken = default)
     {
@@ -52,12 +35,5 @@ public class EventController:Controller
         var events = await _eventService.GetAllAsync(cancellationToken);
         return Ok(events);
     }
-
-    [Authorize(Policy = "AdminArea")]
-    [HttpDelete("delete/{id}")]
-    public async Task<IActionResult> DeleteAsync(Guid id, CancellationToken cancellationToken = default)
-    {
-        await _eventService.DeleteAsync(id, cancellationToken);
-        return Ok();
-    }
+    
 }
