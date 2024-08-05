@@ -1,8 +1,8 @@
 using EventMaster.Domain.Models;
 
-namespace EventMaster.BLL.DTOs.Requests.Event;
+namespace EventMaster.BLL.DTOs.Implementations.Requests.Event;
 
-public class EventFilterDto
+public class EventFilterDto: BaseValidationModel<EventFilterDto>
 {
     public string Name { get; set; }
     public DateTime? Date { get; set; }

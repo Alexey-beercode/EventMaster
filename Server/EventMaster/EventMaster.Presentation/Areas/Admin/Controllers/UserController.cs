@@ -4,7 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace EventMaster.Areas.Admin.Controllers;
 
-[Route("api/admin/user")]
+[Area("admin")]
+[Route("api/user")]
 [Authorize(Policy = "AdminArea")]
 public class UserController:Controller
 {

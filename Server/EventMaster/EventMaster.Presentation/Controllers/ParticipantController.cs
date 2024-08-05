@@ -1,5 +1,6 @@
-using EventMaster.BLL.DTOs.Requests.Participant;
+using EventMaster.BLL.DTOs.Implementations.Requests.Participant;
 using EventMaster.BLL.Services.Interfaces;
+using EventMaster.Filters;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -7,6 +8,7 @@ namespace EventMaster.Controllers;
 
 [Authorize]
 [Route("api/participant")]
+[ModelValidator]
 public class ParticipantController:Controller
 {
     private readonly IParticipantService _participantService;

@@ -1,4 +1,4 @@
-using EventMaster.BLL.DTOs.Requests.User;
+using EventMaster.BLL.DTOs.Implementations.Requests.User;
 using FluentValidation;
 
 namespace EventMaster.BLL.Infrastructure.Validators;

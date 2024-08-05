@@ -1,9 +1,11 @@
 using EventMaster.BLL.Services.Interfaces;
+using EventMaster.Filters;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EventMaster.Controllers;
 
 [Route("api/eventCategory")]
+[ModelValidator]
 public class EventCategoryController:Controller
 {
     private readonly IEventCategoryService _eventCategoryService;

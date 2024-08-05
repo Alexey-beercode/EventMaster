@@ -123,18 +123,24 @@ public static class WebApplicationBuilderExtension
         builder.Services.AddScoped<IUserService,UserService>();
         builder.Services.AddScoped<IEventCategoryService,EventCategoryService>();
         builder.Services.AddScoped<IParticipantService,ParticipantService>();
+        
         builder.Services.AddScoped<IUnitOfWork,UnitOfWork>();
+        
         builder.Services.AddScoped<IEventCategoryRepository,EventCategoryRepository>();
         builder.Services.AddScoped<IEventRepository,EventRepository>();
         builder.Services.AddScoped<IUserRepository,UserRepository>();
         builder.Services.AddScoped<IParticipantRepository,ParticipantRepository>();
         builder.Services.AddScoped<IRoleRepository,RoleRepository>();
+        
+        builder.Services.AddControllers(); 
+        
     }
 
     public static void AddValidation(this WebApplicationBuilder builder)
     {
-        builder.Services.AddFluentValidationAutoValidation();
-        builder.Services.AddFluentValidationClientsideAdapters();
+        builder
+            .Services.AddFluentValidationAutoValidation()
+            .AddFluentValidationClientsideAdapters();
         builder.Services.AddValidatorsFromAssemblyContaining<EventFilterDTOValidator>();
         builder.Services.AddValidatorsFromAssemblyContaining<CreateEventDTOValidator>();
         builder.Services.AddValidatorsFromAssemblyContaining<CreateParticipantDTOValidator>();

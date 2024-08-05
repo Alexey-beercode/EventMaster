@@ -1,5 +1,5 @@
 using AutoMapper;
-using EventMaster.BLL.DTOs.Requests.User;
+using EventMaster.BLL.DTOs.Implementations.Requests.User;
 using EventMaster.BLL.DTOs.Responses.User;
 using EventMaster.Domain.Entities.Implementations;
 

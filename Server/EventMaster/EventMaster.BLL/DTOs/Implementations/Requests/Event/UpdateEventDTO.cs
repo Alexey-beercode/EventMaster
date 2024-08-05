@@ -1,9 +1,9 @@
 using EventMaster.Domain.Models;
 using Microsoft.AspNetCore.Http;
 
-namespace EventMaster.BLL.DTOs.Requests.Event;
+namespace EventMaster.BLL.DTOs.Implementations.Requests.Event;
 
-public class UpdateEventDTO
+public class UpdateEventDTO: BaseValidationModel<UpdateEventDTO>
 {
     public Guid Id { get; set; }
     public string Name { get; set; }

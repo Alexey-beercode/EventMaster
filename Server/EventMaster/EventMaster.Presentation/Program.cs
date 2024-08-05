@@ -9,7 +9,6 @@ builder.AddMapping();
 builder.AddServices();
 builder.AddValidation();
 builder.AddSwaggerDocumentation();
-builder.Services.AddControllers(); 
 var app = builder.Build();
 
 app.AddApplicationMiddleware();

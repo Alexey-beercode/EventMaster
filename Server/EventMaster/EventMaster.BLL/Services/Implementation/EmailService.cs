@@ -36,7 +36,7 @@ public class EmailService:IEmailService
         }
     }
 
-    private string RenderEmail(EventUpdateEmail eventUpdateEmail)
+    public string RenderEmail(EventUpdateEmail eventUpdateEmail)
     {
         return $@"
         <!DOCTYPE html>

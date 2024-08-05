@@ -1,5 +1,5 @@
 using AutoMapper;
-using EventMaster.BLL.DTOs.Requests.User;
+using EventMaster.BLL.DTOs.Implementations.Requests.User;
 using EventMaster.BLL.DTOs.Responses.Role;
 using EventMaster.BLL.DTOs.Responses.User;
 using EventMaster.BLL.Exceptions;
@@ -96,7 +96,7 @@ public class UserService : IUserService
         return new TokenDTO { RefreshToken = refreshToken, AccessToken = accessToken };
     }
 
-    public async Task RevokeAsync(Guid userId, CancellationToken cancellationToken=default)
+    public async Task RevokeAsync(Guid userId, CancellationToken cancellationToken = default)
     {
         var user = await _unitOfWork.Users.GetByIdAsync(userId, cancellationToken)
                    ?? throw new EntityNotFoundException("User", userId);
@@ -107,6 +107,7 @@ public class UserService : IUserService
         _unitOfWork.Users.Update(user);
         await _unitOfWork.SaveChangesAsync(cancellationToken);
     }
+
 
     public async Task<IEnumerable<UserResponseDTO>> GetAllAsync(CancellationToken cancellationToken = default)
     {

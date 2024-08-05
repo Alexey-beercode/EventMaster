@@ -1,4 +1,4 @@
-using EventMaster.BLL.DTOs.Requests.UserRole;
+using EventMaster.BLL.DTOs.Implementations.Requests.UserRole;
 using EventMaster.BLL.DTOs.Responses.Role;
 using EventMaster.Domain.Entities.Implementations;
 

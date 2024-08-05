@@ -1,13 +1,15 @@
-using EventMaster.BLL.DTOs.Requests.UserRole;
+using EventMaster.BLL.DTOs.Implementations.Requests.UserRole;
 using EventMaster.BLL.Services.Interfaces;
+using EventMaster.Filters;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EventMaster.Areas.Admin.Controllers;
 
-
+[Area("admin")]
 [Route("api/admin/role")]
 [Authorize(Policy = "AdminArea")]
+[ModelValidator]
 public class RoleController:Controller
 {
     private IRoleService _roleService;

@@ -1,4 +1,3 @@
-using EventMaster.BLL.DTOs.Requests.User;
 using EventMaster.BLL.DTOs.Responses.User;
 using FluentValidation;
 

@@ -1,12 +1,14 @@
-using EventMaster.BLL.DTOs.Requests.User;
+using EventMaster.BLL.DTOs.Implementations.Requests.User;
 using EventMaster.BLL.Services.Interfaces;
 using EventMaster.Domain.Entities.Implementations;
+using EventMaster.Filters;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EventMaster.Controllers;
 
 [Route("api/auth")]
+[ModelValidator]
 public class AuthController:Controller
 {
     private readonly IUserService _userService;

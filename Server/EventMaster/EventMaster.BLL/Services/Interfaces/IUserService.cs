@@ -1,4 +1,4 @@
-using EventMaster.BLL.DTOs.Requests.User;
+using EventMaster.BLL.DTOs.Implementations.Requests.User;
 using EventMaster.BLL.DTOs.Responses.User;
 
 namespace EventMaster.BLL.Services.Interfaces;

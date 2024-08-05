@@ -1,4 +1,4 @@
-using EventMaster.BLL.DTOs.Requests.Event;
+using EventMaster.BLL.DTOs.Implementations.Requests.Event;
 using EventMaster.BLL.DTOs.Responses.Event;
 using EventMaster.Domain.Entities.Implementations;
 

@@ -1,9 +1,9 @@
 using EventMaster.Domain.Models;
 using Microsoft.AspNetCore.Http;
 
-namespace EventMaster.BLL.DTOs.Requests.Event;
+namespace EventMaster.BLL.DTOs.Implementations.Requests.Event;
 
-public class CreateEventDTO
+public class CreateEventDTO: BaseValidationModel<CreateEventDTO>
 {
     public string Name { get; set; }
     public string Description { get; set; }

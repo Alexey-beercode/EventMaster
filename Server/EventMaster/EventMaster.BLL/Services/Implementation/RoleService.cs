@@ -1,5 +1,5 @@
 using AutoMapper;
-using EventMaster.BLL.DTOs.Requests.UserRole;
+using EventMaster.BLL.DTOs.Implementations.Requests.UserRole;
 using EventMaster.BLL.DTOs.Responses.Role;
 using EventMaster.BLL.Services.Interfaces;
 using EventMaster.DAL.Infrastructure;

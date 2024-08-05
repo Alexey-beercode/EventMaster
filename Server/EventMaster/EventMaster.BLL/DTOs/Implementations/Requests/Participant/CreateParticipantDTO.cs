@@ -1,6 +1,6 @@
-namespace EventMaster.BLL.DTOs.Requests.Participant;
+namespace EventMaster.BLL.DTOs.Implementations.Requests.Participant;
 
-public class CreateParticipantDTO
+public class CreateParticipantDTO: BaseValidationModel<CreateParticipantDTO>
 {
     public string FirstName { get; set; }
     public string LastName { get; set; }

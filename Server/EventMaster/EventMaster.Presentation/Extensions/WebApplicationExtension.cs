@@ -24,9 +24,12 @@ public static class WebApplicationExtension
                 .AllowCredentials();
         }); 
         app.UseRouting();
+        
         app.UseAuthentication();
         app.UseAuthorization();
+        
         app.MapControllers();
+        
         app.UseMiddleware<ExceptionHandlingMiddleware>();
     }
 }

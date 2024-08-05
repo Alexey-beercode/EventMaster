@@ -1,12 +1,15 @@
-using EventMaster.BLL.DTOs.Requests.Event;
+using EventMaster.BLL.DTOs.Implementations.Requests.Event;
 using EventMaster.BLL.Services.Interfaces;
+using EventMaster.Filters;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EventMaster.Areas.Admin.Controllers;
 
-[Route("api/admin/event")]
+[Area("admin")]
+[Route("api/event")]
 [Authorize(Policy = "AdminArea")]
+[ModelValidator]
 public class EventController:Controller
 {
     private readonly IEventService _eventService;
