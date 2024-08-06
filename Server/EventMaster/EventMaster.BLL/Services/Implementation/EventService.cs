@@ -75,7 +75,7 @@ public class EventService : IEventService
         var events = await query
             .Skip((filter.PageNumber - 1) * filter.PageSize)
             .Take(filter.PageSize)
-            .ToListAsync(cancellationToken);
+            .ToListAsync(cancellationToken);  
 
         return _mapper.Map<IEnumerable<EventResponseDTO>>(events);
     }

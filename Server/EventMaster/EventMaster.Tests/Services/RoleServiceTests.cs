@@ -24,7 +24,6 @@ public class RoleServiceTests
     [Fact]
     public async Task GetRolesByUserIdAsync_ValidUser_ReturnsRoleDTOs()
     {
-        // Arrange
         var userId = Guid.NewGuid();
         var roles = new List<Role>
         {
@@ -40,11 +39,9 @@ public class RoleServiceTests
         _unitOfWorkMock.Setup(uow => uow.Roles.GetRolesByUserIdAsync(userId, It.IsAny<CancellationToken>()))
             .ReturnsAsync(roles);
         _mapperMock.Setup(m => m.Map<IEnumerable<RoleDTO>>(roles)).Returns(roleDTOs);
-
-        // Act
+        
         var result = await _roleService.GetRolesByUserIdAsync(userId);
 
-        // Assert
         Assert.Equal(roleDTOs, result);
         _unitOfWorkMock.Verify(uow => uow.Roles.GetRolesByUserIdAsync(userId, It.IsAny<CancellationToken>()), Times.Once);
     }
@@ -52,15 +49,12 @@ public class RoleServiceTests
     [Fact]
     public async Task CheckUserHasRoleAsync_RoleExists_ReturnsTrue()
     {
-        // Arrange
         var roleId = Guid.NewGuid();
         _unitOfWorkMock.Setup(uow => uow.Roles.CheckUserHasRoleAsync(roleId, It.IsAny<CancellationToken>()))
             .ReturnsAsync(true);
-
-        // Act
+        
         var result = await _roleService.CheckUserHasRoleAsync(roleId);
-
-        // Assert
+        
         Assert.True(result);
         _unitOfWorkMock.Verify(uow => uow.Roles.CheckUserHasRoleAsync(roleId, It.IsAny<CancellationToken>()), Times.Once);
     }
@@ -68,21 +62,16 @@ public class RoleServiceTests
     [Fact]
     public async Task SetRoleToUserAsync_ValidUserRole_SetsRoleAndSavesChanges()
     {
-        // Arrange
         var userRoleDto = new UserRoleDTO { UserId = Guid.NewGuid(), RoleId = Guid.NewGuid() };
-
-        // Настройка мока для вызова метода SetRoleToUserAsync
+        
         _unitOfWorkMock.Setup(uow => uow.Roles.SetRoleToUserAsync(userRoleDto.UserId, userRoleDto.RoleId, It.IsAny<CancellationToken>()))
             .Returns(Task.CompletedTask);
-
-        // Настройка мока для вызова SaveChangesAsync
+        
         _unitOfWorkMock.Setup(uow => uow.SaveChangesAsync(It.IsAny<CancellationToken>()))
             .ReturnsAsync(1);
-
-        // Act
+        
         await _roleService.SetRoleToUserAsync(userRoleDto);
-
-        // Assert
+        
         _unitOfWorkMock.Verify(uow => uow.Roles.SetRoleToUserAsync(userRoleDto.UserId, userRoleDto.RoleId, It.IsAny<CancellationToken>()), Times.Once);
         _unitOfWorkMock.Verify(uow => uow.SaveChangesAsync(It.IsAny<CancellationToken>()), Times.Once);
     }
@@ -91,21 +80,16 @@ public class RoleServiceTests
     [Fact]
     public async Task RemoveRoleFromUserAsync_ValidUserRole_RemovesRoleAndSavesChanges()
     {
-        // Arrange
         var userRoleDto = new UserRoleDTO { UserId = Guid.NewGuid(), RoleId = Guid.NewGuid() };
 
-        // Настройка мока для вызова метода RemoveRoleFromUserAsync
         _unitOfWorkMock.Setup(uow => uow.Roles.RemoveRoleFromUserAsync(userRoleDto.UserId, userRoleDto.RoleId, It.IsAny<CancellationToken>()))
             .Returns(Task.CompletedTask);
-
-        // Настройка мока для вызова SaveChangesAsync
+        
         _unitOfWorkMock.Setup(uow => uow.SaveChangesAsync(It.IsAny<CancellationToken>()))
             .ReturnsAsync(1);
-
-        // Act
+        
         await _roleService.RemoveRoleFromUserAsync(userRoleDto);
-
-        // Assert
+        
         _unitOfWorkMock.Verify(uow => uow.Roles.RemoveRoleFromUserAsync(userRoleDto.UserId, userRoleDto.RoleId, It.IsAny<CancellationToken>()), Times.Once);
         _unitOfWorkMock.Verify(uow => uow.SaveChangesAsync(It.IsAny<CancellationToken>()), Times.Once);
     }
@@ -115,7 +99,6 @@ public class RoleServiceTests
     [Fact]
     public async Task GetAllAsync_ReturnsAllRoles()
     {
-        // Arrange
         var roles = new List<Role>
         {
             new Role { Id = Guid.NewGuid(), Name = "Admin" },
@@ -130,10 +113,8 @@ public class RoleServiceTests
         _unitOfWorkMock.Setup(uow => uow.Roles.GetAllAsync(It.IsAny<CancellationToken>())).ReturnsAsync(roles);
         _mapperMock.Setup(m => m.Map<IEnumerable<RoleDTO>>(roles)).Returns(roleDTOs);
 
-        // Act
         var result = await _roleService.GetAllAsync();
 
-        // Assert
         Assert.Equal(roleDTOs, result);
         _unitOfWorkMock.Verify(uow => uow.Roles.GetAllAsync(It.IsAny<CancellationToken>()), Times.Once);
     }

@@ -14,7 +14,7 @@ public abstract class BaseValidationModel<T> : IBaseValidationModel
         if (!result.IsValid && result.Errors.Any())
         {
             var errors =new StringBuilder();
-            result.Errors.ForEach(a => errors.Append(a.ErrorMessage).Append("\n"));
+            result.Errors.ForEach(a => errors.Append(a.ErrorMessage).Append('\n'));
             throw new ValidationException(errors.ToString());
         }
     }

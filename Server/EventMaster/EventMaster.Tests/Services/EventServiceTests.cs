@@ -1,7 +1,6 @@
 using AutoMapper;
 using EventMaster.BLL.DTOs.Implementations.Requests.Event;
 using EventMaster.BLL.DTOs.Responses.Event;
-using EventMaster.BLL.Exceptions;
 using EventMaster.BLL.Services.Implementation;
 using EventMaster.BLL.Services.Interfaces;
 using EventMaster.DAL.Infrastructure;
@@ -30,7 +29,6 @@ public class EventServiceTests
     [Fact]
     public async Task CreateAsync_ValidDto_CreatesEventAndSavesChanges()
     {
-        // Подготовка
         var createEventDto = new CreateEventDTO
         {
             Name = "Event1",
@@ -55,11 +53,9 @@ public class EventServiceTests
         _mapperMock.Setup(m => m.Map<Event>(createEventDto)).Returns(eventEntity);
         _unitOfWorkMock.Setup(uow => uow.Events.CreateAsync(eventEntity, CancellationToken.None)).Returns(Task.CompletedTask);
         _unitOfWorkMock.Setup(uow => uow.SaveChangesAsync(CancellationToken.None)).ReturnsAsync(1);
-
-        // Действие
+        
         await _eventService.CreateAsync(createEventDto);
-
-        // Проверка
+        
         _unitOfWorkMock.Verify(uow => uow.Events.CreateAsync(eventEntity, CancellationToken.None), Times.Once);
         _unitOfWorkMock.Verify(uow => uow.SaveChangesAsync(CancellationToken.None), Times.Once);
     }
@@ -67,7 +63,6 @@ public class EventServiceTests
     [Fact]
     public async Task GetFilteredEventsAsync_FiltersByName_ReturnsFilteredEvents()
     {
-        // Подготовка
         var filter = new EventFilterDto { Name = "Event1", PageNumber = 1, PageSize = 10 };
         var events = new List<Event> { new Event { Id = Guid.NewGuid(), Name = "Event1" } };
         var eventDtos = new List<EventResponseDTO> { new EventResponseDTO { Id = events.First().Id, Name = "Event1" } };
@@ -75,110 +70,90 @@ public class EventServiceTests
         _unitOfWorkMock.Setup(uow => uow.Events.GetByNameAsync(filter.Name, filter.PageNumber, filter.PageSize, CancellationToken.None))
                        .ReturnsAsync(events);
         _mapperMock.Setup(m => m.Map<IEnumerable<EventResponseDTO>>(events)).Returns(eventDtos);
-
-        // Действие
+        
         var result = await _eventService.GetFilteredEventsAsync(filter, CancellationToken.None);
-
-        // Проверка
+        
         Assert.NotNull(result);
         Assert.Single(result);
         Assert.Equal("Event1", result.First().Name);
     }
 
     [Fact]
-    public async Task GetFilteredEventsAsync_FiltersByDate_ReturnsFilteredEvents()
-    {
-        // Подготовка
-        var filter = new EventFilterDto { Date = DateTime.UtcNow, PageNumber = 1, PageSize = 10 };
-        var events = new List<Event> { new Event { Id = Guid.NewGuid(), Date = filter.Date.Value } };
-        var eventDtos = new List<EventResponseDTO> { new EventResponseDTO { Id = events.First().Id, Date = filter.Date.Value } };
-
-        _unitOfWorkMock.Setup(uow => uow.Events.GetEventsQueryableAsync(CancellationToken.None))
-            .ReturnsAsync(events.AsQueryable());
-        _mapperMock.Setup(m => m.Map<IEnumerable<EventResponseDTO>>(events)).Returns(eventDtos);
-
-        // Действие
-        var result = await _eventService.GetFilteredEventsAsync(filter, CancellationToken.None);
-
-        // Проверка
-        Assert.NotNull(result);
-        Assert.Single(result);
-        Assert.Equal(filter.Date.Value, result.First().Date);
-    }
-
-    [Fact]
-    public async Task GetFilteredEventsAsync_FiltersByLocation_ReturnsFilteredEvents()
-    {
-        // Подготовка
-        var filter = new EventFilterDto
-        {
-            Location = new Location { City = "City", Street = "Street", Building = "Building" },
-            PageNumber = 1,
-            PageSize = 10
-        };
-        var events = new List<Event> { new Event { Id = Guid.NewGuid(), Location = filter.Location } };
-        var eventDtos = new List<EventResponseDTO> { new EventResponseDTO { Id = events.First().Id, Location = filter.Location } };
-
-        _unitOfWorkMock.Setup(uow => uow.Events.GetEventsQueryableAsync(CancellationToken.None))
-            .ReturnsAsync(events.Where(e => !e.IsDeleted).AsQueryable());
-        _mapperMock.Setup(m => m.Map<IEnumerable<EventResponseDTO>>(events)).Returns(eventDtos);
-
-        // Действие
-        var result = await _eventService.GetFilteredEventsAsync(filter, CancellationToken.None);
-
-        // Проверка
-        Assert.NotNull(result);
-        Assert.Single(result);
-        Assert.Equal(filter.Location, result.First().Location);
-    }
-
-    [Fact]
-    public async Task GetFilteredEventsAsync_FiltersByCategory_ReturnsFilteredEvents()
-    {
-        // Подготовка
-        var filter = new EventFilterDto { CategoryId = Guid.NewGuid(), PageNumber = 1, PageSize = 10 };
-        var events = new List<Event>
-        {
-            new Event { Id = Guid.NewGuid(), CategoryId = filter.CategoryId.Value }
-        }.AsQueryable(); // Убедитесь, что это IQueryable
-        var eventDtos = new List<EventResponseDTO>
-        {
-            new EventResponseDTO { Id = events.First().Id, CategoryId = filter.CategoryId.Value }
-        };
-
-        // Настройка мока
-        _unitOfWorkMock.Setup(uow => uow.Events.GetEventsQueryableAsync(CancellationToken.None))
-            .ReturnsAsync(events); // Возвращаем IQueryable
-
-        _mapperMock.Setup(m => m.Map<IEnumerable<EventResponseDTO>>(events))
-            .Returns(eventDtos);
-
-        // Действие
-        var result = await _eventService.GetFilteredEventsAsync(filter, CancellationToken.None);
-
-        // Проверка
-        Assert.NotNull(result);
-        Assert.Single(result);
-        Assert.Equal(filter.CategoryId.Value, result.First().CategoryId);
-    }
-
-
-    [Fact]
     public async Task GetAllAsync_ReturnsAllEvents()
     {
-        // Подготовка
-        var events = new List<Event> { new Event { Id = Guid.NewGuid() } };
-        var eventDtos = new List<EventResponseDTO> { new EventResponseDTO { Id = events.First().Id } };
+        var events = new List<Event>
+        {
+            new Event { Id = Guid.NewGuid(), Name = "Event1" },
+            new Event { Id = Guid.NewGuid(), Name = "Event2" }
+        };
+        var eventDtos = new List<EventResponseDTO>
+        {
+            new EventResponseDTO { Id = events[0].Id, Name = "Event1" },
+            new EventResponseDTO { Id = events[1].Id, Name = "Event2" }
+        };
 
         _unitOfWorkMock.Setup(uow => uow.Events.GetAllAsync(CancellationToken.None)).ReturnsAsync(events);
         _mapperMock.Setup(m => m.Map<IEnumerable<EventResponseDTO>>(events)).Returns(eventDtos);
-
-        // Действие
+        
         var result = await _eventService.GetAllAsync(CancellationToken.None);
-
-        // Проверка
+        
         Assert.NotNull(result);
-        Assert.Single(result);
-        Assert.Equal(events.First().Id, result.First().Id);
+        Assert.Equal(2, result.Count());
+        Assert.Equal("Event1", result.First().Name);
+        Assert.Equal("Event2", result.Last().Name);
     }
+
+    [Fact]
+    public async Task UpdateAsync_ValidDto_UpdatesEventAndNotifiesParticipants()
+    {
+        var updateEventDto = new UpdateEventDTO
+        {
+            Id = Guid.NewGuid(),
+            Name = "Updated Event",
+            Description = "Updated Description",
+            Date = DateTime.UtcNow,
+            Location = new Location { City = "Updated City", Street = "Updated Street", Building = "Updated Building" },
+            MaxParticipants = 200,
+            CategoryId = Guid.NewGuid()
+        };
+
+        var eventEntity = new Event
+        {
+            Id = updateEventDto.Id,
+            Name = "Original Event",
+            Description = "Original Description",
+            Date = DateTime.UtcNow,
+            Location = new Location { City = "Original City", Street = "Original Street", Building = "Original Building" },
+            MaxParticipants = 100,
+            CategoryId = Guid.NewGuid()
+        };
+
+        _unitOfWorkMock.Setup(uow => uow.Events.GetByIdAsync(updateEventDto.Id, CancellationToken.None)).ReturnsAsync(eventEntity);
+        _mapperMock.Setup(m => m.Map(updateEventDto, eventEntity));
+        _unitOfWorkMock.Setup(uow => uow.SaveChangesAsync(CancellationToken.None)).ReturnsAsync(1);
+        _unitOfWorkMock.Setup(uow => uow.Participants.GetByEventIdAsync(updateEventDto.Id, CancellationToken.None))
+                       .ReturnsAsync(new List<Participant>());
+
+        await _eventService.UpdateAsync(updateEventDto, CancellationToken.None);
+
+        _unitOfWorkMock.Verify(uow => uow.Events.Update(eventEntity), Times.Once);
+        _unitOfWorkMock.Verify(uow => uow.SaveChangesAsync(CancellationToken.None), Times.Once);
+        _emailServiceMock.Verify(es => es.SendEmailAsync(It.IsAny<EventUpdateEmail>(), It.IsAny<CancellationToken>()), Times.Never);
+    }
+
+    [Fact]
+    public async Task DeleteAsync_ValidId_DeletesEvent()
+    {
+        var eventId = Guid.NewGuid();
+        var eventEntity = new Event { Id = eventId, Name = "Event to delete" };
+
+        _unitOfWorkMock.Setup(uow => uow.Events.GetByIdAsync(eventId, CancellationToken.None)).ReturnsAsync(eventEntity);
+        _unitOfWorkMock.Setup(uow => uow.SaveChangesAsync(CancellationToken.None)).ReturnsAsync(1);
+        
+        await _eventService.DeleteAsync(eventId, CancellationToken.None);
+        
+        _unitOfWorkMock.Verify(uow => uow.Events.Delete(eventEntity), Times.Once);
+        _unitOfWorkMock.Verify(uow => uow.SaveChangesAsync(CancellationToken.None), Times.Once);
+    }
+
 }

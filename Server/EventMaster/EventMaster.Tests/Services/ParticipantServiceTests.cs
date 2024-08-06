@@ -26,7 +26,6 @@ public class ParticipantServiceTests
     [Fact]
     public async Task CreateAsync_ValidDto_CreatesParticipantAndSavesChanges()
     {
-        // Arrange
         var participantDto = new CreateParticipantDTO
         {
             FirstName = "John",
@@ -61,11 +60,9 @@ public class ParticipantServiceTests
             .Returns(Task.CompletedTask);
         _unitOfWorkMock.Setup(uow => uow.SaveChangesAsync(It.IsAny<CancellationToken>()))
             .ReturnsAsync(1);
-
-        // Act
+        
         await _participantService.CreateAsync(participantDto);
-
-        // Assert
+        
         _unitOfWorkMock.Verify(uow => uow.Participants.CreateAsync(participant, It.IsAny<CancellationToken>()), Times.Once);
         _unitOfWorkMock.Verify(uow => uow.SaveChangesAsync(It.IsAny<CancellationToken>()), Times.Once);
     }
@@ -73,7 +70,6 @@ public class ParticipantServiceTests
     [Fact]
     public async Task DeleteAsync_ValidId_DeletesParticipantAndSavesChanges()
     {
-        // Arrange
         var participantId = Guid.NewGuid();
         var participant = new Participant { Id = participantId };
 
@@ -81,11 +77,9 @@ public class ParticipantServiceTests
             .ReturnsAsync(participant);
         _unitOfWorkMock.Setup(uow => uow.SaveChangesAsync(It.IsAny<CancellationToken>()))
             .ReturnsAsync(1);
-
-        // Act
+        
         await _participantService.DeleteAsync(participantId);
-
-        // Assert
+        
         _unitOfWorkMock.Verify(uow => uow.Participants.Delete(participant), Times.Once);
         _unitOfWorkMock.Verify(uow => uow.SaveChangesAsync(It.IsAny<CancellationToken>()), Times.Once);
     }
@@ -93,7 +87,6 @@ public class ParticipantServiceTests
     [Fact]
     public async Task GetByEventIdAsync_ValidEventId_ReturnsParticipantDtos()
     {
-        // Arrange
         var eventId = Guid.NewGuid();
         var eventFromDb = new Event { Id = eventId };
         var participant1 = new Participant { Id = Guid.NewGuid(), EventId = eventId };
@@ -110,11 +103,9 @@ public class ParticipantServiceTests
             .ReturnsAsync(participants);
         _mapperMock.Setup(m => m.Map<IEnumerable<ParticipantDTO>>(participants))
             .Returns(participantDtos);
-
-        // Act
+        
         var result = await _participantService.GetByEventIdAsync(eventId);
-
-        // Assert
+        
         Assert.NotNull(result);
         Assert.Equal(2, result.Count());
         _unitOfWorkMock.Verify(uow => uow.Participants.GetByEventIdAsync(eventId, It.IsAny<CancellationToken>()), Times.Once);
@@ -123,7 +114,7 @@ public class ParticipantServiceTests
     [Fact]
     public async Task GetByUserIdAsync_ValidUserId_ReturnsParticipantDtos()
     {
-        // Arrange
+        
         var userId = Guid.NewGuid();
         var participant1 = new Participant { Id = Guid.NewGuid(), UserId = userId, EventId = Guid.NewGuid() };
         var participant2 = new Participant { Id = Guid.NewGuid(), UserId = userId, EventId = Guid.NewGuid() };
@@ -145,11 +136,10 @@ public class ParticipantServiceTests
             _unitOfWorkMock.Setup(uow => uow.Events.GetByIdAsync(participant.EventId, It.IsAny<CancellationToken>()))
                 .ReturnsAsync(new Event { Id = participant.EventId });
         }
-
-        // Act
+        
         var result = await _participantService.GetByUserIdAsync(userId);
 
-        // Assert
+        
         Assert.NotNull(result);
         Assert.Equal(2, result.Count());
         _unitOfWorkMock.Verify(uow => uow.Participants.GetByUserId(userId, It.IsAny<CancellationToken>()), Times.Once);
@@ -159,20 +149,17 @@ public class ParticipantServiceTests
     [Fact]
     public async Task CreateAsync_UserNotFound_ThrowsEntityNotFoundException()
     {
-        // Arrange
         var participantDto = new CreateParticipantDTO { UserId = Guid.NewGuid(), EventId = Guid.NewGuid() };
 
         _unitOfWorkMock.Setup(uow => uow.Users.GetByIdAsync(participantDto.UserId, It.IsAny<CancellationToken>()))
             .ReturnsAsync((User)null);
-
-        // Act & Assert
+        
         await Assert.ThrowsAsync<EntityNotFoundException>(() => _participantService.CreateAsync(participantDto));
     }
 
     [Fact]
     public async Task CreateAsync_EventNotFound_ThrowsEntityNotFoundException()
     {
-        // Arrange
         var participantDto = new CreateParticipantDTO { UserId = Guid.NewGuid(), EventId = Guid.NewGuid() };
         var user = new User { Id = participantDto.UserId };
 
@@ -180,34 +167,32 @@ public class ParticipantServiceTests
             .ReturnsAsync(user);
         _unitOfWorkMock.Setup(uow => uow.Events.GetByIdAsync(participantDto.EventId, It.IsAny<CancellationToken>()))
             .ReturnsAsync((Event)null);
-
-        // Act & Assert
+        
         await Assert.ThrowsAsync<EntityNotFoundException>(() => _participantService.CreateAsync(participantDto));
     }
 
     [Fact]
     public async Task DeleteAsync_ParticipantNotFound_ThrowsEntityNotFoundException()
     {
-        // Arrange
+        
         var participantId = Guid.NewGuid();
 
         _unitOfWorkMock.Setup(uow => uow.Participants.GetByIdAsync(participantId, It.IsAny<CancellationToken>()))
             .ReturnsAsync((Participant)null);
-
-        // Act & Assert
+        
         await Assert.ThrowsAsync<EntityNotFoundException>(() => _participantService.DeleteAsync(participantId));
     }
 
     [Fact]
     public async Task GetByEventIdAsync_EventNotFound_ThrowsEntityNotFoundException()
     {
-        // Arrange
+        
         var eventId = Guid.NewGuid();
 
         _unitOfWorkMock.Setup(uow => uow.Events.GetByIdAsync(eventId, It.IsAny<CancellationToken>()))
             .ReturnsAsync((Event)null);
 
-        // Act & Assert
+        
         await Assert.ThrowsAsync<EntityNotFoundException>(() => _participantService.GetByEventIdAsync(eventId));
     }
 }

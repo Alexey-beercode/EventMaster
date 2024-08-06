@@ -51,9 +51,10 @@ public class EventRepository:IEventRepository
     }
 
     
-    public async Task<IQueryable<Event>> GetEventsQueryableAsync(CancellationToken cancellationToken=default)
+    public async Task<IQueryable<Event>> GetEventsQueryableAsync(CancellationToken cancellationToken = default)
     {
         return await Task.FromResult(_dbContext.Events.Where(e => !e.IsDeleted).AsQueryable());
     }
+
 
 }

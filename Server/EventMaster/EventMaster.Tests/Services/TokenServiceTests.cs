@@ -1,13 +1,9 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
-using System.Security.Cryptography;
-using System.Text;
 using EventMaster.BLL.Services.Implementation;
 using EventMaster.Domain.Entities.Implementations;
 using Microsoft.Extensions.Configuration;
-using Microsoft.IdentityModel.Tokens;
 using Moq;
-using Xunit;
 
 public class TokenServiceTests
 {
@@ -20,11 +16,10 @@ public class TokenServiceTests
 
         var jwtConfig = new Dictionary<string, string>
         {
-            // Use a longer secret key (at least 32 bytes for HS256)
-            { "Jwt:Secret", "super_secret_key_12345678901234567890123456789012" }, // 32 bytes key
+            { "Jwt:Secret", "super_secret_key_12345678901234567890123456789012" },
             { "Jwt:Issuer", "http://localhost" },
             { "Jwt:Audience", "http://localhost" },
-            { "Jwt:Expire", "1" }  // 1 hour for expiration
+            { "Jwt:Expire", "1" } 
         };
 
         _configurationMock.Setup(c => c[It.IsAny<string>()]).Returns((string key) => jwtConfig[key]);
@@ -35,16 +30,13 @@ public class TokenServiceTests
     [Fact]
     public void GenerateAccessToken_ValidClaims_ReturnsToken()
     {
-        // Arrange
         var claims = new List<Claim>
         {
             new Claim(ClaimTypes.Name, "testuser")
         };
-
-        // Act
+        
         var token = _tokenService.GenerateAccessToken(claims);
-
-        // Assert
+        
         Assert.NotNull(token);
 
         var tokenHandler = new JwtSecurityTokenHandler();
@@ -58,10 +50,8 @@ public class TokenServiceTests
     [Fact]
     public void GenerateRefreshToken_ReturnsValidToken()
     {
-        // Act
         var refreshToken = _tokenService.GenerateRefreshToken();
-
-        // Assert
+        
         Assert.NotNull(refreshToken);
         Assert.True(refreshToken.Length > 0);
     }
@@ -69,7 +59,6 @@ public class TokenServiceTests
     [Fact]
     public void CreateClaims_ValidUserAndRoles_ReturnsClaims()
     {
-        // Arrange
         var user = new User { Id = Guid.NewGuid(), Login = "testuser" };
         var roles = new List<Role>
         {
@@ -77,10 +66,8 @@ public class TokenServiceTests
             new Role { Name = "User" }
         };
 
-        // Act
         var claims = _tokenService.CreateClaims(user, roles);
-
-        // Assert
+        
         Assert.Contains(claims, claim => claim.Type == ClaimTypes.NameIdentifier && claim.Value == user.Id.ToString());
         Assert.Contains(claims, claim => claim.Type == ClaimTypes.Name && claim.Value == user.Login);
         Assert.Contains(claims, claim => claim.Type == ClaimTypes.Role && claim.Value == "Admin");

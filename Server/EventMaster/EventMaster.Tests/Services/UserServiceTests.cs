@@ -1,13 +1,8 @@
-using Xunit;
 using Moq;
 using AutoMapper;
 using EventMaster.DAL.Infrastructure;
 using EventMaster.Domain.Entities.Implementations;
 using Microsoft.Extensions.Configuration;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Collections.Generic;
-using System;
 using System.Security.Claims;
 using EventMaster.BLL.DTOs.Implementations.Requests.User;
 using EventMaster.BLL.DTOs.Responses.User;
@@ -37,29 +32,25 @@ public class UserServiceTests
     [Fact]
     public async Task RegisterAsync_UserExists_ThrowsAuthorizationException()
     {
-        // Arrange
         var userDto = new UserDTO { Login = "testuser", Password = "password" };
         _unitOfWorkMock.Setup(uow => uow.Users.GetByLoginAsync(userDto.Login, It.IsAny<CancellationToken>())).ReturnsAsync(new User());
-
-        // Act & Assert
+        
         await Assert.ThrowsAsync<AuthorizationException>(() => _userService.RegisterAsync(userDto));
     }
 
 [Fact]
 public async Task RegisterAsync_ValidUser_ReturnsTokenDTO()
 {
-    // Arrange
     var userDto = new UserDTO { Login = "testuser", Password = "password" };
     var user = new User { Id = Guid.NewGuid(), Login = userDto.Login };
     var role = new Role { Id = Guid.NewGuid(), Name = "Resident" };
     var refreshToken = "refreshtoken";
     var accessToken = "accesstoken";
     var configSectionMock = new Mock<IConfigurationSection>();
-
-    // Ensure the user does not exist initially
+    
     _unitOfWorkMock.SetupSequence(uow => uow.Users.GetByLoginAsync(userDto.Login, It.IsAny<CancellationToken>()))
-                   .ReturnsAsync((User)null)  // Initial check for existing user returns null
-                   .ReturnsAsync(user);       // After creation, returns the newly created user
+                   .ReturnsAsync((User)null) 
+                   .ReturnsAsync(user);     
 
     _unitOfWorkMock.Setup(uow => uow.Users.CreateAsync(It.IsAny<User>(), It.IsAny<CancellationToken>())).Returns(Task.CompletedTask);
     _unitOfWorkMock.Setup(uow => uow.Roles.GetByNameAsync("Resident", It.IsAny<CancellationToken>())).ReturnsAsync(role);
@@ -70,15 +61,12 @@ public async Task RegisterAsync_ValidUser_ReturnsTokenDTO()
     _tokenServiceMock.Setup(ts => ts.GenerateAccessToken(It.IsAny<IEnumerable<Claim>>())).Returns(accessToken);
 
     _mapperMock.Setup(m => m.Map<User>(It.IsAny<UserDTO>())).Returns(user);
-
-    // Mocking the configuration section retrieval
+    
     configSectionMock.Setup(a => a.Value).Returns("7");
     _configurationMock.Setup(c => c.GetSection("Jwt:RefreshTokenExpirationDays")).Returns(configSectionMock.Object);
-
-    // Act
+    
     var result = await _userService.RegisterAsync(userDto);
 
-    // Assert
     Assert.Equal(refreshToken, result.RefreshToken);
     Assert.Equal(accessToken, result.AccessToken);
 }
@@ -88,24 +76,20 @@ public async Task RegisterAsync_ValidUser_ReturnsTokenDTO()
     [Fact]
 public async Task LoginAsync_UserNotFound_ThrowsAuthorizationException()
 {
-    // Arrange
     var userDto = new UserDTO { Login = "testuser", Password = "password" };
     _unitOfWorkMock.Setup(uow => uow.Users.GetByLoginAsync(userDto.Login, It.IsAny<CancellationToken>())).ReturnsAsync((User)null);
-
-    // Act & Assert
+    
     await Assert.ThrowsAsync<AuthorizationException>(() => _userService.LoginAsync(userDto));
 }
 
     [Fact]
     public async Task LoginAsync_IncorrectPassword_ThrowsAuthorizationException()
     {
-        // Arrange
         var userDto = new UserDTO { Login = "testuser", Password = "password" };
         var user = new User { Id = Guid.NewGuid(), Login = userDto.Login, PasswordHash = PasswordHelper.HashPassword("wrongpassword") };
 
         _unitOfWorkMock.Setup(uow => uow.Users.GetByLoginAsync(userDto.Login, It.IsAny<CancellationToken>())).ReturnsAsync(user);
-
-        // Act & Assert
+        
         await Assert.ThrowsAsync<AuthorizationException>(() => _userService.LoginAsync(userDto));
     }
 
@@ -113,7 +97,6 @@ public async Task LoginAsync_UserNotFound_ThrowsAuthorizationException()
     [Fact]
     public async Task LoginAsync_ValidUser_ReturnsTokenDTO()
     {
-        // Arrange
         var userDto = new UserDTO { Login = "testuser", Password = "password" };
         var hashedPassword = PasswordHelper.HashPassword(userDto.Password);
         var user = new User { Id = Guid.NewGuid(), Login = userDto.Login, PasswordHash = hashedPassword };
@@ -133,11 +116,9 @@ public async Task LoginAsync_UserNotFound_ThrowsAuthorizationException()
         configurationSectionMock.Setup(a => a.Value).Returns("7");
 
         _configurationMock.Setup(c => c.GetSection("Jwt:RefreshTokenExpirationDays")).Returns(configurationSectionMock.Object);
-
-        // Act
+        
         var result = await _userService.LoginAsync(userDto);
-
-        // Assert
+        
         Assert.Equal(refreshToken, result.RefreshToken);
         Assert.Equal(accessToken, result.AccessToken);
     }
@@ -145,7 +126,7 @@ public async Task LoginAsync_UserNotFound_ThrowsAuthorizationException()
 [Fact]
 public async Task RefreshTokenAsync_ValidUser_ReturnsTokenDTO()
 {
-    // Arrange
+    
     var refreshToken = "refreshtoken";
     var user = new User { Id = Guid.NewGuid(), Login = "testuser", RefreshToken = refreshToken };
     var role = new Role { Id = Guid.NewGuid(), Name = "Resident" };
@@ -155,11 +136,9 @@ public async Task RefreshTokenAsync_ValidUser_ReturnsTokenDTO()
     _unitOfWorkMock.Setup(uow => uow.Roles.GetRolesByUserIdAsync(user.Id, It.IsAny<CancellationToken>())).ReturnsAsync(new List<Role> { role });
     _tokenServiceMock.Setup(ts => ts.CreateClaims(It.IsAny<User>(), It.IsAny<List<Role>>())).Returns(new List<Claim>());
     _tokenServiceMock.Setup(ts => ts.GenerateAccessToken(It.IsAny<IEnumerable<Claim>>())).Returns(accessToken);
-
-    // Act
+    
     var result = await _userService.RefreshTokenAsync(refreshToken);
-
-    // Assert
+    
     Assert.Equal(refreshToken, result.RefreshToken);
     Assert.Equal(accessToken, result.AccessToken);
 }
@@ -167,29 +146,24 @@ public async Task RefreshTokenAsync_ValidUser_ReturnsTokenDTO()
 [Fact]
 public async Task RevokeAsync_UserNotFound_ThrowsEntityNotFoundException()
 {
-    // Arrange
     var userId = Guid.NewGuid();
     _unitOfWorkMock.Setup(uow => uow.Users.GetByIdAsync(userId, It.IsAny<CancellationToken>())).ReturnsAsync((User)null);
-
-    // Act & Assert
+    
     await Assert.ThrowsAsync<EntityNotFoundException>(() => _userService.RevokeAsync(userId));
 }
 
 [Fact]
 public async Task RevokeAsync_ValidUser_SuccessfullyRevokesToken()
 {
-    // Arrange
     var userId = Guid.NewGuid();
     var user = new User { Id = userId, Login = "testuser", RefreshToken = "refreshtoken", RefreshTokenExpiryTime = DateTime.UtcNow.AddDays(7) };
 
     _unitOfWorkMock.Setup(uow => uow.Users.GetByIdAsync(userId, It.IsAny<CancellationToken>())).ReturnsAsync(user);
     _unitOfWorkMock.Setup(uow => uow.Users.Update(It.IsAny<User>()));
     _unitOfWorkMock.Setup(uow => uow.SaveChangesAsync(It.IsAny<CancellationToken>())).ReturnsAsync(1);
-
-    // Act
+    
     await _userService.RevokeAsync(userId);
 
-    // Assert
     _unitOfWorkMock.Verify(uow => uow.Users.Update(It.Is<User>(u => u.RefreshToken == string.Empty && u.RefreshTokenExpiryTime == DateTime.MinValue)), Times.Once);
     _unitOfWorkMock.Verify(uow => uow.SaveChangesAsync(It.IsAny<CancellationToken>()), Times.Once);
 }
@@ -199,7 +173,6 @@ public async Task RevokeAsync_ValidUser_SuccessfullyRevokesToken()
 [Fact]
 public async Task GetAllAsync_ReturnsListOfUsers()
 {
-    // Arrange
     var users = new List<User>
     {
         new User { Id = Guid.NewGuid(), Login = "user1" },
@@ -214,11 +187,9 @@ public async Task GetAllAsync_ReturnsListOfUsers()
 
     _unitOfWorkMock.Setup(uow => uow.Users.GetAllAsync(It.IsAny<CancellationToken>())).ReturnsAsync(users);
     _mapperMock.Setup(m => m.Map<IEnumerable<UserResponseDTO>>(users)).Returns(userResponseDtos);
-
-    // Act
+    
     var result = await _userService.GetAllAsync();
 
-    // Assert
     Assert.Equal(userResponseDtos.Count, result.Count());
     Assert.Equal(userResponseDtos[0].Login, result.ElementAt(0).Login);
     Assert.Equal(userResponseDtos[1].Login, result.ElementAt(1).Login);
