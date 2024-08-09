@@ -6,36 +6,15 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EventMaster.DAL.Repositories.Implementations;
 
-public class EventRepository:IEventRepository
+public class EventRepository: BaseRepository<Event>, IEventRepository
 {
     private readonly ApplicationDbContext _dbContext;
 
-    public EventRepository(ApplicationDbContext dbContext)
+    public EventRepository(ApplicationDbContext dbContext) : base(dbContext)
     {
         _dbContext = dbContext;
     }
-
-    public async Task<Event> GetByIdAsync(Guid id, CancellationToken cancellationToken=default)
-    {
-        return await _dbContext.Events.FirstOrDefaultAsync(e => e.Id == id && !e.IsDeleted,cancellationToken);
-    }
-
-    public async Task<IEnumerable<Event>> GetAllAsync(CancellationToken cancellationToken=default)
-    {
-        return await _dbContext.Events.Where(e => !e.IsDeleted).ToListAsync(cancellationToken);
-    }
-
-    public async Task CreateAsync(Event entity, CancellationToken cancellationToken=default)
-    {
-        await _dbContext.Events.AddAsync(entity, cancellationToken);
-    }
-
-    public void Delete(Event entity)
-    {
-        entity.IsDeleted = true;
-        _dbContext.Events.Update(entity);
-    }
-
+    
     public void Update(Event entity)
     {
         _dbContext.Events.Update(entity);

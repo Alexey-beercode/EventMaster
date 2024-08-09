@@ -21,23 +21,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bb5a2d7e-1c6d-4ae9-8106-8562e601abf8" name="Changes" comment="updated services, entities, tests, repository">
+    <list default="true" id="bb5a2d7e-1c6d-4ae9-8106-8562e601abf8" name="Changes" comment="added base DTOs updated service and tests">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.EventMaster/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.EventMaster/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.BLL/DTOs/Implementations/Requests/Event/CreateEventDTO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.BLL/DTOs/Implementations/Requests/Event/CreateEventDTO.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.BLL/DTOs/Implementations/Requests/Event/EventFilterDTO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.BLL/DTOs/Implementations/Requests/Event/EventFilterDTO.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.BLL/DTOs/Implementations/Requests/Event/UpdateEventDTO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.BLL/DTOs/Implementations/Requests/Event/UpdateEventDTO.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.BLL/DTOs/Implementations/Requests/Participant/CreateParticipantDTO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.BLL/DTOs/Implementations/Requests/Participant/CreateParticipantDTO.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.BLL/DTOs/Implementations/Responses/Event/EventResponseDTO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.BLL/DTOs/Implementations/Responses/Event/EventResponseDTO.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.BLL/DTOs/Implementations/Responses/Participant/ParticipantDTO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.BLL/DTOs/Implementations/Responses/Participant/ParticipantDTO.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.BLL/Infrastructure/Mapper/EventProfile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.BLL/Infrastructure/Mapper/EventProfile.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.BLL/Infrastructure/Mapper/ParticipantProfile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.BLL/Infrastructure/Mapper/ParticipantProfile.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.BLL/Services/Implementation/EventService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.BLL/Services/Implementation/EventService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.BLL/Services/Implementation/ParticipantService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.BLL/Services/Implementation/ParticipantService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.BLL/Services/Implementation/RoleService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.BLL/Services/Implementation/RoleService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.BLL/Services/Interfaces/IEventService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.BLL/Services/Interfaces/IEventService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.BLL/Services/Interfaces/IParticipantService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.BLL/Services/Interfaces/IParticipantService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.Tests/Services/EventServiceTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.Tests/Services/EventServiceTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.Tests/Services/ParticipantServiceTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.Tests/Services/ParticipantServiceTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EventMaster.DAL/Repositories/Implementations/EventRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.DAL/Repositories/Implementations/EventRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EventMaster.DAL/Repositories/Interfaces/IBaseRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.DAL/Repositories/Interfaces/IBaseRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EventMaster.DAL/Repositories/Interfaces/IEventCategoryRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.DAL/Repositories/Interfaces/IEventCategoryRepository.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,6 +36,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="mock://C:/AProject/EventMaster/Server/EventMaster/EventMaster.BLL/DTOs/Implementations/Requests/Event/CreateEventDTO.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/AProject/EventMaster/Server/EventMaster/EventMaster.DAL/Infrastructure/Database/ApplicationDbContext.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/EventMaster.Domain/Entities/Event.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/EventMaster.Domain/Entities/EventCategory.cs" root0="FORCE_HIGHLIGHTING" />
@@ -331,7 +320,7 @@
       <workItem from="1722185008588" duration="13813000" />
       <workItem from="1722642880978" duration="27630000" />
       <workItem from="1722981638823" duration="1514000" />
-      <workItem from="1723133069297" duration="6735000" />
+      <workItem from="1723133069297" duration="7827000" />
     </task>
     <task id="LOCAL-00001" summary="Created project structure">
       <option name="closed" value="true" />
@@ -445,7 +434,15 @@
       <option name="project" value="LOCAL" />
       <updated>1723163121261</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="added base DTOs updated service and tests">
+      <option name="closed" value="true" />
+      <created>1723227623017</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1723227623017</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -478,6 +475,7 @@
     <MESSAGE value="Added tests, udpated validators" />
     <MESSAGE value="Updated tests, refactor tests" />
     <MESSAGE value="updated services, entities, tests, repository" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated services, entities, tests, repository" />
+    <MESSAGE value="added base DTOs updated service and tests" />
+    <option name="LAST_COMMIT_MESSAGE" value="added base DTOs updated service and tests" />
   </component>
 </project>

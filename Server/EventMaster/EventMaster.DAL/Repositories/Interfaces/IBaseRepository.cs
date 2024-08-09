@@ -1,9 +1,11 @@
-﻿namespace EventMaster.DAL.Repositories.Interfaces;
+﻿using EventMaster.Domain.Entities;
 
-public interface IBaseRepository<T>
+namespace EventMaster.DAL.Repositories.Interfaces;
+
+public interface IBaseRepository<T> where T : BaseEntity
 {
-    Task<T> GetByIdAsync(Guid id, CancellationToken cancellationToken);
-    Task<IEnumerable<T>> GetAllAsync(CancellationToken cancellationToken);
-    Task CreateAsync(T entity, CancellationToken cancellationToken);
+    Task<T> GetByIdAsync(Guid id, CancellationToken cancellationToken = default);
+    Task<IEnumerable<T>> GetAllAsync(CancellationToken cancellationToken = default);
+    Task CreateAsync(T entity, CancellationToken cancellationToken = default);
     void Delete(T entity);
 }

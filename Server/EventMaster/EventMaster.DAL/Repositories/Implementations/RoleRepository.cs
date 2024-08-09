@@ -5,36 +5,15 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EventMaster.DAL.Repositories.Implementations;
 
-public class RoleRepository:IRoleRepository
+public class RoleRepository:BaseRepository<Role>,IRoleRepository
 {
     private readonly ApplicationDbContext _dbContext;
 
-    public RoleRepository(ApplicationDbContext dbContext)
+    public RoleRepository(ApplicationDbContext dbContext) : base(dbContext)
     {
         _dbContext = dbContext;
     }
-
-    public async Task<Role> GetByIdAsync(Guid id, CancellationToken cancellationToken=default)
-    {
-        return await _dbContext.Roles.FirstOrDefaultAsync(r => r.Id == id && !r.IsDeleted, cancellationToken);
-    }
-
-    public async Task<IEnumerable<Role>> GetAllAsync(CancellationToken cancellationToken=default)
-    {
-        return await _dbContext.Roles.Where(r => !r.IsDeleted).ToListAsync(cancellationToken);
-    }
-
-    public async Task CreateAsync(Role entity, CancellationToken cancellationToken=default)
-    {
-        await _dbContext.Roles.AddAsync(entity, cancellationToken);
-    }
-
-    public void Delete(Role entity)
-    {
-        entity.IsDeleted = true;
-        _dbContext.Roles.Update(entity);
-    }
-
+    
     public async Task<IEnumerable<Role>> GetRolesByUserIdAsync(Guid userId, CancellationToken cancellationToken=default)
     {
         return await _dbContext.UsersRoles
