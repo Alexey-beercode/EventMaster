@@ -1,7 +1,7 @@
 using System.Text;
 using AutoMapper;
 using EventMaster.BLL.DTOs.Implementations.Requests.Event;
-using EventMaster.BLL.DTOs.Responses.Event;
+using EventMaster.BLL.DTOs.Implementations.Responses.Event;
 using EventMaster.BLL.Exceptions;
 using EventMaster.BLL.Services.Interfaces;
 using EventMaster.DAL.Infrastructure;

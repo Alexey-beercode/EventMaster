@@ -21,61 +21,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bb5a2d7e-1c6d-4ae9-8106-8562e601abf8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/EventMaster.Domain/Entities/EventCategory.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EventMaster.Domain/Entities/Role.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.BLL/Infrastructure/Mapper/EventCategoryProfile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.BLL/Infrastructure/Mapper/EventCategoryProfile.cs" afterDir="false" />
+    <list default="true" id="bb5a2d7e-1c6d-4ae9-8106-8562e601abf8" name="Changes" comment="updated services, entities, tests, repository">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.EventMaster/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.EventMaster/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EventMaster.BLL/DTOs/Implementations/Requests/Event/CreateEventDTO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.BLL/DTOs/Implementations/Requests/Event/CreateEventDTO.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EventMaster.BLL/DTOs/Implementations/Requests/Event/EventFilterDTO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.BLL/DTOs/Implementations/Requests/Event/EventFilterDTO.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EventMaster.BLL/DTOs/Implementations/Requests/Event/UpdateEventDTO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.BLL/DTOs/Implementations/Requests/Event/UpdateEventDTO.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EventMaster.BLL/DTOs/Implementations/Requests/Participant/CreateParticipantDTO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.BLL/DTOs/Implementations/Requests/Participant/CreateParticipantDTO.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EventMaster.BLL/DTOs/Implementations/Responses/Event/EventResponseDTO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.BLL/DTOs/Implementations/Responses/Event/EventResponseDTO.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EventMaster.BLL/DTOs/Implementations/Responses/Participant/ParticipantDTO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.BLL/DTOs/Implementations/Responses/Participant/ParticipantDTO.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/EventMaster.BLL/Infrastructure/Mapper/EventProfile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.BLL/Infrastructure/Mapper/EventProfile.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/EventMaster.BLL/Infrastructure/Mapper/ParticipantProfile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.BLL/Infrastructure/Mapper/ParticipantProfile.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.BLL/Infrastructure/Mapper/RoleProfile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.BLL/Infrastructure/Mapper/RoleProfile.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.BLL/Infrastructure/Mapper/UserProfile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.BLL/Infrastructure/Mapper/UserProfile.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/EventMaster.BLL/Services/Implementation/EventService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.BLL/Services/Implementation/EventService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/EventMaster.BLL/Services/Implementation/ParticipantService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.BLL/Services/Implementation/ParticipantService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/EventMaster.BLL/Services/Implementation/RoleService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.BLL/Services/Implementation/RoleService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.BLL/Services/Implementation/TokenService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.BLL/Services/Implementation/TokenService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.BLL/Services/Implementation/UserService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.BLL/Services/Implementation/UserService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/EventMaster.BLL/Services/Interfaces/IEventService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.BLL/Services/Interfaces/IEventService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.BLL/Services/Interfaces/IRoleService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.BLL/Services/Interfaces/IRoleService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.BLL/Services/Interfaces/ITokenService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.BLL/Services/Interfaces/ITokenService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.DAL/Extensions/ModelBuilderExtension.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.DAL/Extensions/ModelBuilderExtension.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.DAL/Infrastructure/Database/ApplicationDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.DAL/Infrastructure/Database/ApplicationDbContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.DAL/Infrastructure/Database/Configuration/EventCategoryConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.DAL/Infrastructure/Database/Configuration/EventCategoryConfiguration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.DAL/Infrastructure/Database/Configuration/EventConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.DAL/Infrastructure/Database/Configuration/EventConfiguration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.DAL/Infrastructure/Database/Configuration/ParticipantConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.DAL/Infrastructure/Database/Configuration/ParticipantConfiguration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.DAL/Infrastructure/Database/Configuration/RoleConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.DAL/Infrastructure/Database/Configuration/RoleConfiguration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.DAL/Infrastructure/Database/Configuration/UserConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.DAL/Infrastructure/Database/Configuration/UserConfiguration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.DAL/Infrastructure/Database/Configuration/UserRoleConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.DAL/Infrastructure/Database/Configuration/UserRoleConfiguration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.DAL/Repositories/Implementations/EventCategoryRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.DAL/Repositories/Implementations/EventCategoryRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.DAL/Repositories/Implementations/EventRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.DAL/Repositories/Implementations/EventRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.DAL/Repositories/Implementations/ParticipantRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.DAL/Repositories/Implementations/ParticipantRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.DAL/Repositories/Implementations/RoleRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.DAL/Repositories/Implementations/RoleRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.DAL/Repositories/Implementations/UserRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.DAL/Repositories/Implementations/UserRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.DAL/Repositories/Interfaces/IEventCategoryRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.DAL/Repositories/Interfaces/IEventCategoryRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.DAL/Repositories/Interfaces/IEventRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.DAL/Repositories/Interfaces/IEventRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.DAL/Repositories/Interfaces/IParticipantRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.DAL/Repositories/Interfaces/IParticipantRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.DAL/Repositories/Interfaces/IRoleRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.DAL/Repositories/Interfaces/IRoleRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.DAL/Repositories/Interfaces/IUserRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.DAL/Repositories/Interfaces/IUserRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.Domain/Entities/Implementations/Event.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.Domain/Entities/Event.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.Domain/Entities/Implementations/EventCategory.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.Domain/Entities/Implementations/Participant.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.Domain/Entities/Participant.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.Domain/Entities/Implementations/Role.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.Domain/Entities/Implementations/User.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.Domain/Entities/User.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.Domain/Entities/Implementations/UserRole.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.Domain/Entities/UserRole.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.Domain/Entities/Interfaces/IBaseEntity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.Domain/Entities/BaseEntity.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.Presentation/Controllers/AuthController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.Presentation/Controllers/AuthController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.Presentation/Filters/ModelValidatorAttribute.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.Presentation/Filters/ModelValidatorAttribute.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.Presentation/Middleware/ExceptionHandlingMiddleware.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.Presentation/Middleware/ExceptionHandlingMiddleware.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.Tests/Repositories/EventCategoryRepositoryTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.Tests/Repositories/EventCategoryRepositoryTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.Tests/Repositories/EventRepositoryTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.Tests/Repositories/EventRepositoryTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.Tests/Repositories/ParticipantRepositoryTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.Tests/Repositories/ParticipantRepositoryTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.Tests/Repositories/RoleRepositoryTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.Tests/Repositories/RoleRepositoryTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.Tests/Repositories/UserRepositoryTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.Tests/Repositories/UserRepositoryTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.Tests/Services/EventCategoryServiceTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.Tests/Services/EventCategoryServiceTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EventMaster.BLL/Services/Interfaces/IParticipantService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.BLL/Services/Interfaces/IParticipantService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/EventMaster.Tests/Services/EventServiceTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.Tests/Services/EventServiceTests.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/EventMaster.Tests/Services/ParticipantServiceTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.Tests/Services/ParticipantServiceTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.Tests/Services/RoleServiceTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.Tests/Services/RoleServiceTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.Tests/Services/TokenServiceTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.Tests/Services/TokenServiceTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventMaster.Tests/Services/UserServiceTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventMaster.Tests/Services/UserServiceTests.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,6 +48,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="mock://C:/AProject/EventMaster/Server/EventMaster/EventMaster.DAL/Infrastructure/Database/ApplicationDbContext.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/EventMaster.Domain/Entities/Event.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/EventMaster.Domain/Entities/EventCategory.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/EventMaster.Domain/Entities/Participant.cs" root0="FORCE_HIGHLIGHTING" />
@@ -368,7 +331,7 @@
       <workItem from="1722185008588" duration="13813000" />
       <workItem from="1722642880978" duration="27630000" />
       <workItem from="1722981638823" duration="1514000" />
-      <workItem from="1723133069297" duration="3826000" />
+      <workItem from="1723133069297" duration="6735000" />
     </task>
     <task id="LOCAL-00001" summary="Created project structure">
       <option name="closed" value="true" />
@@ -474,7 +437,15 @@
       <option name="project" value="LOCAL" />
       <updated>1722907474555</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="updated services, entities, tests, repository">
+      <option name="closed" value="true" />
+      <created>1723163121261</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1723163121261</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -506,6 +477,7 @@
     <MESSAGE value="Updated controllers, deleted unused files" />
     <MESSAGE value="Added tests, udpated validators" />
     <MESSAGE value="Updated tests, refactor tests" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated tests, refactor tests" />
+    <MESSAGE value="updated services, entities, tests, repository" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated services, entities, tests, repository" />
   </component>
 </project>

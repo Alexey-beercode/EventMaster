@@ -1,5 +1,5 @@
 using EventMaster.BLL.DTOs.Implementations.Requests.Event;
-using EventMaster.BLL.DTOs.Responses.Event;
+using EventMaster.BLL.DTOs.Implementations.Responses.Event;
 
 namespace EventMaster.BLL.Services.Interfaces;
 

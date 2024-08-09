@@ -1,15 +1,12 @@
-using EventMaster.BLL.DTOs.Responses.Event;
+using EventMaster.BLL.DTOs.Implementations.BaseDTOs;
+using EventMaster.BLL.DTOs.Implementations.Responses.Event;
 
-namespace EventMaster.BLL.DTOs.Responses.Participant;
+namespace EventMaster.BLL.DTOs.Implementations.Responses.Participant;
 
-public class ParticipantDTO
+public class ParticipantDTO:ParticipantBaseDTO<ParticipantDTO>
 {
     public Guid Id { get; set; }
-    public string FirstName { get; set; }
-    public string LastName { get; set; }
     public DateTime BirthDate { get; set; }
     public DateTime RegistrationDate { get; set; }
-    public string Email { get; set; }
-    public Guid UserId { get; set; }
     public EventResponseDTO Event { get; set; }
 }

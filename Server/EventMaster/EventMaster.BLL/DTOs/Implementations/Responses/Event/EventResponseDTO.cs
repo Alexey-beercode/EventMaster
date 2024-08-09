@@ -1,15 +1,9 @@
-using EventMaster.Domain.Models;
+using EventMaster.BLL.DTOs.Implementations.BaseDTOs;
 
-namespace EventMaster.BLL.DTOs.Responses.Event;
+namespace EventMaster.BLL.DTOs.Implementations.Responses.Event;
 
-public class EventResponseDTO
+public class EventResponseDTO : EventBaseDTO<EventResponseDTO>
 {
     public Guid Id { get; set; }
-    public string Name { get; set; }
-    public string Description { get; set; }
-    public DateTime Date { get; set; }
-    public Location Location { get; set; } 
-    public int MaxParticipants { get; set; }
     public byte[] Image { get; set; }
-    public Guid CategoryId { get; set; }
 }

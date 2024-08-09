@@ -33,7 +33,7 @@ public class RoleService:IRoleService
         var isSuccess=await _unitOfWork.Roles.SetRoleToUserAsync(userRoleDto.UserId,userRoleDto.RoleId,cancellationToken);
         if (!isSuccess)
         {
-            throw new Exception($"Role with id : {userRoleDto.RoleId} cannot have set to user with id : {userRoleDto.UserId}");
+            throw new InvalidOperationException($"Role with id : {userRoleDto.RoleId} cannot have set to user with id : {userRoleDto.UserId}");
         }
         await _unitOfWork.SaveChangesAsync(cancellationToken);
     }

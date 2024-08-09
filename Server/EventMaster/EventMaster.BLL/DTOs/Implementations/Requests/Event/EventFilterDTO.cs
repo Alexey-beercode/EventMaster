@@ -1,3 +1,4 @@
+using EventMaster.BLL.DTOs.Implementations.BaseDTOs;
 using EventMaster.Domain.Models;
 
 namespace EventMaster.BLL.DTOs.Implementations.Requests.Event;

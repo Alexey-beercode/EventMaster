@@ -63,36 +63,38 @@ public class RoleServiceTests
     public async Task SetRoleToUserAsync_ValidUserRole_SetsRoleAndSavesChanges()
     {
         var userRoleDto = new UserRoleDTO { UserId = Guid.NewGuid(), RoleId = Guid.NewGuid() };
-        
+    
+        // Настройка мока: SetRoleToUserAsync возвращает true
         _unitOfWorkMock.Setup(uow => uow.Roles.SetRoleToUserAsync(userRoleDto.UserId, userRoleDto.RoleId, It.IsAny<CancellationToken>()))
-           ;
-        
+            .ReturnsAsync(true);  // Возвращаем true для успешного выполнения
+    
         _unitOfWorkMock.Setup(uow => uow.SaveChangesAsync(It.IsAny<CancellationToken>()))
             .ReturnsAsync(1);
-        
+    
         await _roleService.SetRoleToUserAsync(userRoleDto);
-        
+    
         _unitOfWorkMock.Verify(uow => uow.Roles.SetRoleToUserAsync(userRoleDto.UserId, userRoleDto.RoleId, It.IsAny<CancellationToken>()), Times.Once);
         _unitOfWorkMock.Verify(uow => uow.SaveChangesAsync(It.IsAny<CancellationToken>()), Times.Once);
     }
 
-    
     [Fact]
     public async Task RemoveRoleFromUserAsync_ValidUserRole_RemovesRoleAndSavesChanges()
     {
         var userRoleDto = new UserRoleDTO { UserId = Guid.NewGuid(), RoleId = Guid.NewGuid() };
 
+        // Настройка мока: RemoveRoleFromUserAsync возвращает true
         _unitOfWorkMock.Setup(uow => uow.Roles.RemoveRoleFromUserAsync(userRoleDto.UserId, userRoleDto.RoleId, It.IsAny<CancellationToken>()))
-            ;
-        
+            .ReturnsAsync(true);  // Возвращаем true для успешного выполнения
+    
         _unitOfWorkMock.Setup(uow => uow.SaveChangesAsync(It.IsAny<CancellationToken>()))
             .ReturnsAsync(1);
-        
+    
         await _roleService.RemoveRoleFromUserAsync(userRoleDto);
-        
+    
         _unitOfWorkMock.Verify(uow => uow.Roles.RemoveRoleFromUserAsync(userRoleDto.UserId, userRoleDto.RoleId, It.IsAny<CancellationToken>()), Times.Once);
         _unitOfWorkMock.Verify(uow => uow.SaveChangesAsync(It.IsAny<CancellationToken>()), Times.Once);
     }
+
 
 
     

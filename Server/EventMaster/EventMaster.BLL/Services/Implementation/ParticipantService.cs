@@ -1,7 +1,7 @@
 using AutoMapper;
 using EventMaster.BLL.DTOs.Implementations.Requests.Participant;
-using EventMaster.BLL.DTOs.Responses.Event;
-using EventMaster.BLL.DTOs.Responses.Participant;
+using EventMaster.BLL.DTOs.Implementations.Responses.Event;
+using EventMaster.BLL.DTOs.Implementations.Responses.Participant;
 using EventMaster.BLL.Exceptions;
 using EventMaster.BLL.Services.Interfaces;
 using EventMaster.DAL.Infrastructure;
