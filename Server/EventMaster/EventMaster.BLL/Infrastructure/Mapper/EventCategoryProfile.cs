@@ -1,6 +1,6 @@
 using AutoMapper;
 using EventMaster.BLL.DTOs.Responses.EventCategory;
-using EventMaster.Domain.Entities.Implementations;
+using EventMaster.Domain.Entities;
 
 namespace EventMaster.BLL.Infrastructure.Mapper;
 

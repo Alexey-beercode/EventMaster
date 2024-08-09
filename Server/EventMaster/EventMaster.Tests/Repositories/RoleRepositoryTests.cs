@@ -1,6 +1,6 @@
 using EventMaster.DAL.Infrastructure.Database;
 using EventMaster.DAL.Repositories.Implementations;
-using EventMaster.Domain.Entities.Implementations;
+using EventMaster.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using FluentAssertions;
 
@@ -226,7 +226,7 @@ public class RoleRepositoryTests
 
 
     [Fact]
-    public async Task SetRoleToUserAsync_ShouldThrowException_WhenRoleOrUserNotFound()
+    public async Task SetRoleToUserAsync_ShouldReturnFalse_WhenRoleOrUserNotFound()
     {
         using (var context = new ApplicationDbContext(_dbContextOptions))
         {
@@ -234,11 +234,10 @@ public class RoleRepositoryTests
             
             var userId = Guid.NewGuid();
             var roleId = Guid.NewGuid();
+            var result=await repository.SetRoleToUserAsync(userId, roleId);
+               
 
-            var ex = await Assert.ThrowsAsync<InvalidOperationException>(() =>
-                repository.SetRoleToUserAsync(userId, roleId));
-
-            ex.Message.Should().Be("Role or user are not found");
+            result.Should().BeFalse();
         }
     }
 
@@ -267,7 +266,7 @@ public class RoleRepositoryTests
     }
 
     [Fact]
-    public async Task RemoveRoleFromUserAsync_ShouldThrowException_WhenUserRoleNotFound()
+    public async Task RemoveRoleFromUserAsync_ShouldReturnFalse_WhenUserRoleNotFound()
     {
         using (var context = new ApplicationDbContext(_dbContextOptions))
         {
@@ -276,10 +275,10 @@ public class RoleRepositoryTests
             var userId = Guid.NewGuid();
             var roleId = Guid.NewGuid();
 
-            var ex = await Assert.ThrowsAsync<InvalidOperationException>(() =>
-                repository.RemoveRoleFromUserAsync(userId, roleId));
+            var result = await repository.RemoveRoleFromUserAsync(userId, roleId);
+                
 
-            ex.Message.Should().Be("User role not found");
+            result.Should().BeFalse();
         }
     }
 }

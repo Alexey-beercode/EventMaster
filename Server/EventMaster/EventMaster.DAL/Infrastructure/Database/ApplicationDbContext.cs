@@ -1,6 +1,6 @@
 ﻿using EventMaster.DAL.Extensions;
 using EventMaster.DAL.Infrastructure.Database.Configuration;
-using EventMaster.Domain.Entities.Implementations;
+using EventMaster.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace EventMaster.DAL.Infrastructure.Database;

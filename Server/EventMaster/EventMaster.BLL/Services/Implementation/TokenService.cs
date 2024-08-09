@@ -4,7 +4,7 @@ using System.Security.Cryptography;
 using System.Text;
 using EventMaster.BLL.DTOs.Responses.Role;
 using EventMaster.BLL.Services.Interfaces;
-using EventMaster.Domain.Entities.Implementations;
+using EventMaster.Domain.Entities;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;

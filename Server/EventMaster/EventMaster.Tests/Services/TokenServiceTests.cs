@@ -1,7 +1,7 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using EventMaster.BLL.Services.Implementation;
-using EventMaster.Domain.Entities.Implementations;
+using EventMaster.Domain.Entities;
 using Microsoft.Extensions.Configuration;
 using Moq;
 

@@ -1,6 +1,5 @@
 using EventMaster.BLL.DTOs.Implementations.Requests.User;
 using EventMaster.BLL.Services.Interfaces;
-using EventMaster.Domain.Entities.Implementations;
 using EventMaster.Filters;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

@@ -2,7 +2,7 @@ using AutoMapper;
 using EventMaster.BLL.DTOs.Responses.EventCategory;
 using EventMaster.BLL.Services.Implementation;
 using EventMaster.DAL.Infrastructure;
-using EventMaster.Domain.Entities.Implementations;
+using EventMaster.Domain.Entities;
 using Moq;
 
 public class EventCategoryServiceTests

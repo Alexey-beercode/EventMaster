@@ -6,7 +6,7 @@ using EventMaster.BLL.Exceptions;
 using EventMaster.BLL.Helpers;
 using EventMaster.BLL.Services.Interfaces;
 using EventMaster.DAL.Infrastructure;
-using EventMaster.Domain.Entities.Implementations;
+using EventMaster.Domain.Entities;
 using Microsoft.Extensions.Configuration;
 
 namespace EventMaster.BLL.Services.Implementation;

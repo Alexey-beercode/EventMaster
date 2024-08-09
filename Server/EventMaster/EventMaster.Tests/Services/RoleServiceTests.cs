@@ -3,7 +3,7 @@ using EventMaster.BLL.DTOs.Implementations.Requests.UserRole;
 using EventMaster.BLL.DTOs.Responses.Role;
 using EventMaster.BLL.Services.Implementation;
 using EventMaster.DAL.Infrastructure;
-using EventMaster.Domain.Entities.Implementations;
+using EventMaster.Domain.Entities;
 using Moq;
 
 namespace EventMaster.Tests.Services;
@@ -65,7 +65,7 @@ public class RoleServiceTests
         var userRoleDto = new UserRoleDTO { UserId = Guid.NewGuid(), RoleId = Guid.NewGuid() };
         
         _unitOfWorkMock.Setup(uow => uow.Roles.SetRoleToUserAsync(userRoleDto.UserId, userRoleDto.RoleId, It.IsAny<CancellationToken>()))
-            .Returns(Task.CompletedTask);
+           ;
         
         _unitOfWorkMock.Setup(uow => uow.SaveChangesAsync(It.IsAny<CancellationToken>()))
             .ReturnsAsync(1);
@@ -83,7 +83,7 @@ public class RoleServiceTests
         var userRoleDto = new UserRoleDTO { UserId = Guid.NewGuid(), RoleId = Guid.NewGuid() };
 
         _unitOfWorkMock.Setup(uow => uow.Roles.RemoveRoleFromUserAsync(userRoleDto.UserId, userRoleDto.RoleId, It.IsAny<CancellationToken>()))
-            .Returns(Task.CompletedTask);
+            ;
         
         _unitOfWorkMock.Setup(uow => uow.SaveChangesAsync(It.IsAny<CancellationToken>()))
             .ReturnsAsync(1);

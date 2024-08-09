@@ -5,7 +5,7 @@ using EventMaster.BLL.DTOs.Responses.Participant;
 using EventMaster.BLL.Exceptions;
 using EventMaster.BLL.Services.Implementation;
 using EventMaster.DAL.Infrastructure;
-using EventMaster.Domain.Entities.Implementations;
+using EventMaster.Domain.Entities;
 using Moq;
 
 namespace EventMaster.Tests.Services;

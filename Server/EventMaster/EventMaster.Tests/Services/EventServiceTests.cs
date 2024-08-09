@@ -4,7 +4,7 @@ using EventMaster.BLL.DTOs.Responses.Event;
 using EventMaster.BLL.Services.Implementation;
 using EventMaster.BLL.Services.Interfaces;
 using EventMaster.DAL.Infrastructure;
-using EventMaster.Domain.Entities.Implementations;
+using EventMaster.Domain.Entities;
 using EventMaster.Domain.Models;
 using Microsoft.Extensions.Caching.Memory;
 using Moq;

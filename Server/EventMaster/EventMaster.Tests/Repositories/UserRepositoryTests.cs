@@ -1,6 +1,6 @@
 using EventMaster.DAL.Infrastructure.Database;
 using EventMaster.DAL.Repositories.Implementations;
-using EventMaster.Domain.Entities.Implementations;
+using EventMaster.Domain.Entities;
 using FluentAssertions;
 using Microsoft.EntityFrameworkCore;
 

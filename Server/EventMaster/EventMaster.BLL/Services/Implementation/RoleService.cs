@@ -3,7 +3,6 @@ using EventMaster.BLL.DTOs.Implementations.Requests.UserRole;
 using EventMaster.BLL.DTOs.Responses.Role;
 using EventMaster.BLL.Services.Interfaces;
 using EventMaster.DAL.Infrastructure;
-using EventMaster.Domain.Entities.Implementations;
 
 namespace EventMaster.BLL.Services.Implementation;
 
@@ -31,13 +30,22 @@ public class RoleService:IRoleService
 
     public async Task SetRoleToUserAsync(UserRoleDTO userRoleDto, CancellationToken cancellationToken=default)
     {
-        await _unitOfWork.Roles.SetRoleToUserAsync(userRoleDto.UserId,userRoleDto.RoleId,cancellationToken);
+        var isSuccess=await _unitOfWork.Roles.SetRoleToUserAsync(userRoleDto.UserId,userRoleDto.RoleId,cancellationToken);
+        if (!isSuccess)
+        {
+            throw new Exception($"Role with id : {userRoleDto.RoleId} cannot have set to user with id : {userRoleDto.UserId}");
+        }
         await _unitOfWork.SaveChangesAsync(cancellationToken);
     }
 
     public async Task RemoveRoleFromUserAsync(UserRoleDTO userRoleDto, CancellationToken cancellationToken=default)
     {
-        await _unitOfWork.Roles.RemoveRoleFromUserAsync(userRoleDto.UserId, userRoleDto.RoleId, cancellationToken);
+        var isSuccess =
+            await _unitOfWork.Roles.RemoveRoleFromUserAsync(userRoleDto.UserId, userRoleDto.RoleId, cancellationToken);
+        if (!isSuccess)
+        {
+            throw new InvalidOperationException($"Role with id : {userRoleDto.RoleId} cannot have removed from user with id : {userRoleDto.UserId}");
+        }
         await _unitOfWork.SaveChangesAsync(cancellationToken);
 
     }

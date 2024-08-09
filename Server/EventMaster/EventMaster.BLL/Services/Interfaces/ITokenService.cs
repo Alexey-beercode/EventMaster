@@ -1,6 +1,6 @@
 using System.Security.Claims;
 using EventMaster.BLL.DTOs.Responses.Role;
-using EventMaster.Domain.Entities.Implementations;
+using EventMaster.Domain.Entities;
 
 namespace EventMaster.BLL.Services.Interfaces;
 

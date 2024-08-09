@@ -1,4 +1,4 @@
-﻿using EventMaster.Domain.Entities.Implementations;
+﻿using EventMaster.Domain.Entities;
 
 namespace EventMaster.DAL.Repositories.Interfaces;
 

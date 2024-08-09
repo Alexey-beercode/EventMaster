@@ -5,7 +5,7 @@ using EventMaster.BLL.DTOs.Responses.Event;
 using EventMaster.BLL.Exceptions;
 using EventMaster.BLL.Services.Interfaces;
 using EventMaster.DAL.Infrastructure;
-using EventMaster.Domain.Entities.Implementations;
+using EventMaster.Domain.Entities;
 using EventMaster.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Memory;

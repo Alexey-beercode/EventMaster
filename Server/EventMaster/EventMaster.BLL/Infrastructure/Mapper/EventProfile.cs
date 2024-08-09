@@ -1,7 +1,7 @@
 using AutoMapper;
 using EventMaster.BLL.DTOs.Implementations.Requests.Event;
 using EventMaster.BLL.DTOs.Responses.Event;
-using EventMaster.Domain.Entities.Implementations;
+using EventMaster.Domain.Entities;
 using EventMaster.Domain.Models;
 
 namespace EventMaster.BLL.Infrastructure.Mapper

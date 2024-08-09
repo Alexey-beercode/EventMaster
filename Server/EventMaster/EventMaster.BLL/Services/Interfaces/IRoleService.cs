@@ -1,6 +1,5 @@
 using EventMaster.BLL.DTOs.Implementations.Requests.UserRole;
 using EventMaster.BLL.DTOs.Responses.Role;
-using EventMaster.Domain.Entities.Implementations;
 
 namespace EventMaster.BLL.Services.Interfaces;
 
