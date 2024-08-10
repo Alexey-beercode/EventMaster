@@ -1,13 +1,15 @@
 using AutoMapper;
 using EventMaster.BLL.DTOs.Implementations.Requests.Event;
 using EventMaster.BLL.DTOs.Implementations.Responses.Event;
-using EventMaster.BLL.Services.Implementation;
 using EventMaster.BLL.Services.Interfaces;
+using EventMaster.BLL.UseCases;
+using EventMaster.BLL.UseCases.Event;
 using EventMaster.DAL.Infrastructure;
 using EventMaster.Domain.Entities;
 using EventMaster.Domain.Models;
 using Microsoft.Extensions.Caching.Memory;
 using Moq;
+using Xunit;
 
 public class EventServiceTests
 {
@@ -15,7 +17,13 @@ public class EventServiceTests
     private readonly Mock<IEmailService> _emailServiceMock;
     private readonly Mock<IMapper> _mapperMock;
     private readonly Mock<IMemoryCache> _cacheMock;
-    private readonly EventService _eventService;
+
+    private readonly CreateEventUseCase _createEventUseCase;
+    private readonly GetAllEventsUseCase _getAllEventsUseCase;
+    private readonly GetFilteredEventsUseCase _getFilteredEventsUseCase;
+    private readonly UpdateEventUseCase _updateEventUseCase;
+    private readonly DeleteEventUseCase _deleteEventUseCase;
+    private readonly GetEventByIdUseCase _getEventByIdUseCase;
 
     public EventServiceTests()
     {
@@ -23,7 +31,13 @@ public class EventServiceTests
         _emailServiceMock = new Mock<IEmailService>();
         _mapperMock = new Mock<IMapper>();
         _cacheMock = new Mock<IMemoryCache>();
-        _eventService = new EventService(_unitOfWorkMock.Object, _emailServiceMock.Object, _mapperMock.Object, _cacheMock.Object);
+
+        _createEventUseCase = new CreateEventUseCase(_unitOfWorkMock.Object, _mapperMock.Object);
+        _getAllEventsUseCase = new GetAllEventsUseCase(_unitOfWorkMock.Object, _mapperMock.Object);
+        _getFilteredEventsUseCase = new GetFilteredEventsUseCase(_unitOfWorkMock.Object, _mapperMock.Object);
+        _updateEventUseCase = new UpdateEventUseCase(_unitOfWorkMock.Object, _mapperMock.Object, _emailServiceMock.Object);
+        _deleteEventUseCase = new DeleteEventUseCase(_unitOfWorkMock.Object);
+        _getEventByIdUseCase = new GetEventByIdUseCase(_unitOfWorkMock.Object, _mapperMock.Object, _cacheMock.Object);
     }
 
     [Fact]
@@ -53,9 +67,9 @@ public class EventServiceTests
         _mapperMock.Setup(m => m.Map<Event>(createEventDto)).Returns(eventEntity);
         _unitOfWorkMock.Setup(uow => uow.Events.CreateAsync(eventEntity, CancellationToken.None)).Returns(Task.CompletedTask);
         _unitOfWorkMock.Setup(uow => uow.SaveChangesAsync(CancellationToken.None)).ReturnsAsync(1);
-        
-        await _eventService.CreateAsync(createEventDto);
-        
+
+        await _createEventUseCase.ExecuteAsync(createEventDto, CancellationToken.None);
+
         _unitOfWorkMock.Verify(uow => uow.Events.CreateAsync(eventEntity, CancellationToken.None), Times.Once);
         _unitOfWorkMock.Verify(uow => uow.SaveChangesAsync(CancellationToken.None), Times.Once);
     }
@@ -70,9 +84,9 @@ public class EventServiceTests
         _unitOfWorkMock.Setup(uow => uow.Events.GetByNameAsync(filter.Name, filter.PageNumber, filter.PageSize, CancellationToken.None))
                        .ReturnsAsync(events);
         _mapperMock.Setup(m => m.Map<IEnumerable<EventResponseDTO>>(events)).Returns(eventDtos);
-        
-        var result = await _eventService.GetFilteredEventsAsync(filter, CancellationToken.None);
-        
+
+        var result = await _getFilteredEventsUseCase.ExecuteAsync(filter, CancellationToken.None);
+
         Assert.NotNull(result);
         Assert.Single(result);
         Assert.Equal("Event1", result.First().Name);
@@ -94,9 +108,9 @@ public class EventServiceTests
 
         _unitOfWorkMock.Setup(uow => uow.Events.GetAllAsync(CancellationToken.None)).ReturnsAsync(events);
         _mapperMock.Setup(m => m.Map<IEnumerable<EventResponseDTO>>(events)).Returns(eventDtos);
-        
-        var result = await _eventService.GetAllAsync(CancellationToken.None);
-        
+
+        var result = await _getAllEventsUseCase.ExecuteAsync(CancellationToken.None);
+
         Assert.NotNull(result);
         Assert.Equal(2, result.Count());
         Assert.Equal("Event1", result.First().Name);
@@ -134,11 +148,11 @@ public class EventServiceTests
         _unitOfWorkMock.Setup(uow => uow.Participants.GetByEventIdAsync(updateEventDto.Id, CancellationToken.None))
                        .ReturnsAsync(new List<Participant>());
 
-        await _eventService.UpdateAsync(updateEventDto, CancellationToken.None);
+        await _updateEventUseCase.ExecuteAsync(updateEventDto, CancellationToken.None);
 
         _unitOfWorkMock.Verify(uow => uow.Events.Update(eventEntity), Times.Once);
         _unitOfWorkMock.Verify(uow => uow.SaveChangesAsync(CancellationToken.None), Times.Once);
-        _emailServiceMock.Verify(es => es.SendEmailAsync(It.IsAny<EventUpdateEmail>(), It.IsAny<CancellationToken>()), Times.Never);
+        _emailServiceMock.Verify(es => es.SendEmailAsync(It.IsAny<EventUpdateEmail>(), CancellationToken.None), Times.Never);
     }
 
     [Fact]
@@ -149,11 +163,29 @@ public class EventServiceTests
 
         _unitOfWorkMock.Setup(uow => uow.Events.GetByIdAsync(eventId, CancellationToken.None)).ReturnsAsync(eventEntity);
         _unitOfWorkMock.Setup(uow => uow.SaveChangesAsync(CancellationToken.None)).ReturnsAsync(1);
-        
-        await _eventService.DeleteAsync(eventId, CancellationToken.None);
-        
+
+        await _deleteEventUseCase.ExecuteAsync(eventId, CancellationToken.None);
+
         _unitOfWorkMock.Verify(uow => uow.Events.Delete(eventEntity), Times.Once);
         _unitOfWorkMock.Verify(uow => uow.SaveChangesAsync(CancellationToken.None), Times.Once);
     }
 
+    [Fact]
+    public async Task GetEventByIdAsync_CacheMiss_ReturnsEventAndCachesIt()
+    {
+        var eventId = Guid.NewGuid();
+        var eventEntity = new Event { Id = eventId, Name = "Event1" };
+        var eventDto = new EventResponseDTO { Id = eventId, Name = "Event1" };
+
+        _unitOfWorkMock.Setup(uow => uow.Events.GetByIdAsync(eventId, CancellationToken.None)).ReturnsAsync(eventEntity);
+        _mapperMock.Setup(m => m.Map<EventResponseDTO>(eventEntity)).Returns(eventDto);
+        _cacheMock.Setup(c => c.CreateEntry(It.IsAny<object>())).Returns(Mock.Of<ICacheEntry>());
+
+        var result = await _getEventByIdUseCase.ExecuteAsync(eventId, CancellationToken.None);
+
+        Assert.NotNull(result);
+        Assert.Equal("Event1", result.Name);
+
+        _cacheMock.Verify(c => c.CreateEntry(It.IsAny<object>()), Times.Once);
+    }
 }

@@ -1,5 +1,6 @@
 using System.Text;
 using EventMaster.BLL.DTOs.Interfaces;
+using EventMaster.BLL.Exceptions;
 using FluentValidation;
 
 namespace EventMaster.BLL.DTOs.Implementations;
@@ -15,7 +16,7 @@ public abstract class BaseValidationModel<T> : IBaseValidationModel
         {
             var errors =new StringBuilder();
             result.Errors.ForEach(a => errors.Append(a.ErrorMessage).Append('\n'));
-            throw new ValidationException(errors.ToString());
+            throw new BadRequestException(errors.ToString());
         }
     }
 }

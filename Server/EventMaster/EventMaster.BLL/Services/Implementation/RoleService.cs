@@ -1,58 +1,45 @@
-using AutoMapper;
 using EventMaster.BLL.DTOs.Implementations.Requests.UserRole;
 using EventMaster.BLL.DTOs.Responses.Role;
+using EventMaster.BLL.UseCases.Role;
 using EventMaster.BLL.Services.Interfaces;
-using EventMaster.DAL.Infrastructure;
 
-namespace EventMaster.BLL.Services.Implementation;
-
-public class RoleService:IRoleService
+namespace EventMaster.BLL.Services.Implementation
 {
-    private readonly IMapper _mapper;
-    private readonly IUnitOfWork _unitOfWork;
-
-    public RoleService(IMapper mapper, IUnitOfWork unitOfWork)
+    public class RoleService : IRoleService
     {
-        _mapper = mapper;
-        _unitOfWork = unitOfWork;
-    }
+        private readonly GetRolesByUserIdUseCase _getRolesByUserIdUseCase;
+        private readonly CheckUserHasRoleUseCase _checkUserHasRoleUseCase;
+        private readonly SetRoleToUserUseCase _setRoleToUserUseCase;
+        private readonly RemoveRoleFromUserUseCase _removeRoleFromUserUseCase;
+        private readonly GetAllRolesUseCase _getAllRolesUseCase;
 
-    public async Task<IEnumerable<RoleDTO>> GetRolesByUserIdAsync(Guid userId, CancellationToken cancellationToken=default)
-    {
-        var rolesByUser = await _unitOfWork.Roles.GetRolesByUserIdAsync(userId, cancellationToken);
-        return _mapper.Map<IEnumerable<RoleDTO>>(rolesByUser);
-    }
-
-    public async Task<bool> CheckUserHasRoleAsync(Guid roleId, CancellationToken cancellationToken=default)
-    {
-        return await _unitOfWork.Roles.CheckUserHasRoleAsync(roleId, cancellationToken);
-    }
-
-    public async Task SetRoleToUserAsync(UserRoleDTO userRoleDto, CancellationToken cancellationToken=default)
-    {
-        var isSuccess=await _unitOfWork.Roles.SetRoleToUserAsync(userRoleDto.UserId,userRoleDto.RoleId,cancellationToken);
-        if (!isSuccess)
+        public RoleService(
+            GetRolesByUserIdUseCase getRolesByUserIdUseCase,
+            CheckUserHasRoleUseCase checkUserHasRoleUseCase,
+            SetRoleToUserUseCase setRoleToUserUseCase,
+            RemoveRoleFromUserUseCase removeRoleFromUserUseCase,
+            GetAllRolesUseCase getAllRolesUseCase)
         {
-            throw new InvalidOperationException($"Role with id : {userRoleDto.RoleId} cannot have set to user with id : {userRoleDto.UserId}");
+            _getRolesByUserIdUseCase = getRolesByUserIdUseCase;
+            _checkUserHasRoleUseCase = checkUserHasRoleUseCase;
+            _setRoleToUserUseCase = setRoleToUserUseCase;
+            _removeRoleFromUserUseCase = removeRoleFromUserUseCase;
+            _getAllRolesUseCase = getAllRolesUseCase;
         }
-        await _unitOfWork.SaveChangesAsync(cancellationToken);
-    }
 
-    public async Task RemoveRoleFromUserAsync(UserRoleDTO userRoleDto, CancellationToken cancellationToken=default)
-    {
-        var isSuccess =
-            await _unitOfWork.Roles.RemoveRoleFromUserAsync(userRoleDto.UserId, userRoleDto.RoleId, cancellationToken);
-        if (!isSuccess)
-        {
-            throw new InvalidOperationException($"Role with id : {userRoleDto.RoleId} cannot have removed from user with id : {userRoleDto.UserId}");
-        }
-        await _unitOfWork.SaveChangesAsync(cancellationToken);
+        public Task<IEnumerable<RoleDTO>> GetRolesByUserIdAsync(Guid userId, CancellationToken cancellationToken = default) =>
+            _getRolesByUserIdUseCase.ExecuteAsync(userId, cancellationToken);
 
-    }
+        public Task<bool> CheckUserHasRoleAsync(Guid roleId, CancellationToken cancellationToken = default) =>
+            _checkUserHasRoleUseCase.ExecuteAsync(roleId, cancellationToken);
 
-    public async Task<IEnumerable<RoleDTO>> GetAllAsync(CancellationToken cancellationToken=default)
-    {
-        var roles = await _unitOfWork.Roles.GetAllAsync(cancellationToken);
-        return _mapper.Map<IEnumerable<RoleDTO>>(roles);
+        public Task SetRoleToUserAsync(UserRoleDTO userRoleDto, CancellationToken cancellationToken = default) =>
+            _setRoleToUserUseCase.ExecuteAsync(userRoleDto, cancellationToken);
+
+        public Task RemoveRoleFromUserAsync(UserRoleDTO userRoleDto, CancellationToken cancellationToken = default) =>
+            _removeRoleFromUserUseCase.ExecuteAsync(userRoleDto, cancellationToken);
+
+        public Task<IEnumerable<RoleDTO>> GetAllAsync(CancellationToken cancellationToken = default) =>
+            _getAllRolesUseCase.ExecuteAsync(cancellationToken);
     }
 }

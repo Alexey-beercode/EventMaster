@@ -3,6 +3,12 @@ using EventMaster.BLL.Infrastructure.Mapper;
 using EventMaster.BLL.Infrastructure.Validators;
 using EventMaster.BLL.Services.Implementation;
 using EventMaster.BLL.Services.Interfaces;
+using EventMaster.BLL.UseCases;
+using EventMaster.BLL.UseCases.Event;
+using EventMaster.BLL.UseCases.EventCategory;
+using EventMaster.BLL.UseCases.Participant;
+using EventMaster.BLL.UseCases.Role;
+using EventMaster.BLL.UseCases.User;
 using EventMaster.DAL.Infrastructure;
 using EventMaster.DAL.Infrastructure.Database;
 using EventMaster.DAL.Repositories.Implementations;
@@ -116,6 +122,29 @@ public static class WebApplicationBuilderExtension
 
     public static void AddServices(this WebApplicationBuilder builder)
     {
+        builder.Services.AddScoped<CreateEventUseCase>();
+        builder.Services.AddScoped<DeleteEventUseCase>();
+        builder.Services.AddScoped<GetAllEventsUseCase>();
+        builder.Services.AddScoped<GetEventByIdUseCase>();
+        builder.Services.AddScoped<GetFilteredEventsUseCase>();
+        builder.Services.AddScoped<UpdateEventUseCase>();
+        
+        builder.Services.AddScoped<GetAllEventCategoriesUseCase>();
+        builder.Services.AddScoped<GetEventCategoryByIdUseCase>();
+        builder.Services.AddScoped<CreateParticipantUseCase>();
+        builder.Services.AddScoped<DeleteParticipantUseCase>();
+        builder.Services.AddScoped<GetParticipantsByEventIdUseCase>();
+        builder.Services.AddScoped<GetParticipantsByUserIdUseCase>();
+        builder.Services.AddScoped<CheckUserHasRoleUseCase>();
+        builder.Services.AddScoped<GetAllRolesUseCase>();
+        builder.Services.AddScoped<GetRolesByUserIdUseCase>();
+        builder.Services.AddScoped<RemoveRoleFromUserUseCase>();
+        builder.Services.AddScoped<SetRoleToUserUseCase>();
+        builder.Services.AddScoped<GetAllUsersUseCase>();
+        builder.Services.AddScoped<LoginUserUseCase>();
+        builder.Services.AddScoped<RefreshTokenUseCase>();
+        builder.Services.AddScoped<RegisterUserUseCase>();
+        builder.Services.AddScoped<RevokeTokenUseCase>();
         builder.Services.AddTransient<IEmailService, EmailService>();
         builder.Services.AddScoped<ITokenService, TokenService>();
         builder.Services.AddScoped<IRoleService,RoleService>();

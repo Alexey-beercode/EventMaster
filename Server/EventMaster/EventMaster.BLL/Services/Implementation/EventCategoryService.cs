@@ -1,30 +1,28 @@
-using AutoMapper;
 using EventMaster.BLL.DTOs.Responses.EventCategory;
 using EventMaster.BLL.Services.Interfaces;
-using EventMaster.DAL.Infrastructure;
+using EventMaster.BLL.UseCases;
+using EventMaster.BLL.UseCases.EventCategory;
 
 namespace EventMaster.BLL.Services.Implementation;
 
-public class EventCategoryService:IEventCategoryService
+public class EventCategoryService : IEventCategoryService
 {
-    private readonly IUnitOfWork _unitOfWork;
-    private readonly IMapper _mapper;
+    private readonly GetAllEventCategoriesUseCase _getAllEventCategoriesUseCase;
+    private readonly GetEventCategoryByIdUseCase _getEventCategoryByIdUseCase;
 
-    public EventCategoryService(IUnitOfWork unitOfWork, IMapper mapper)
+    public EventCategoryService(GetAllEventCategoriesUseCase getAllEventCategoriesUseCase, GetEventCategoryByIdUseCase getEventCategoryByIdUseCase)
     {
-        _unitOfWork = unitOfWork;
-        _mapper = mapper;
+        _getAllEventCategoriesUseCase = getAllEventCategoriesUseCase;
+        _getEventCategoryByIdUseCase = getEventCategoryByIdUseCase;
     }
 
-    public async Task<IEnumerable<EventCategoryDTO>> GetAllAsync(CancellationToken cancellationToken=default)
+    public async Task<IEnumerable<EventCategoryDTO>> GetAllAsync(CancellationToken cancellationToken = default)
     {
-        var eventCategories = await _unitOfWork.EventCategories.GetAllAsync(cancellationToken);
-        return _mapper.Map<List<EventCategoryDTO>>(eventCategories);
+        return await _getAllEventCategoriesUseCase.ExecuteAsync(cancellationToken);
     }
 
-    public async Task<EventCategoryDTO> GetByIdAsync(Guid id, CancellationToken cancellationToken=default)
+    public async Task<EventCategoryDTO> GetByIdAsync(Guid id, CancellationToken cancellationToken = default)
     {
-        var eventCategoryById = await _unitOfWork.EventCategories.GetByIdAsync(id, cancellationToken);
-        return _mapper.Map<EventCategoryDTO>(eventCategoryById);
+        return await _getEventCategoryByIdUseCase.ExecuteAsync(id, cancellationToken);
     }
 }

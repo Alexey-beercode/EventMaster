@@ -1,21 +1,31 @@
 using AutoMapper;
 using EventMaster.BLL.DTOs.Responses.EventCategory;
-using EventMaster.BLL.Services.Implementation;
+using EventMaster.BLL.UseCases;
 using EventMaster.DAL.Infrastructure;
 using EventMaster.Domain.Entities;
 using Moq;
+using Xunit;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
+using EventMaster.BLL.UseCases.EventCategory;
 
 public class EventCategoryServiceTests
 {
     private readonly Mock<IUnitOfWork> _unitOfWorkMock;
     private readonly Mock<IMapper> _mapperMock;
-    private readonly EventCategoryService _eventCategoryService;
+
+    private readonly GetAllEventCategoriesUseCase _getAllEventCategoriesUseCase;
+    private readonly GetEventCategoryByIdUseCase _getEventCategoryByIdUseCase;
 
     public EventCategoryServiceTests()
     {
         _unitOfWorkMock = new Mock<IUnitOfWork>();
         _mapperMock = new Mock<IMapper>();
-        _eventCategoryService = new EventCategoryService(_unitOfWorkMock.Object, _mapperMock.Object);
+
+        _getAllEventCategoriesUseCase = new GetAllEventCategoriesUseCase(_unitOfWorkMock.Object, _mapperMock.Object);
+        _getEventCategoryByIdUseCase = new GetEventCategoryByIdUseCase(_unitOfWorkMock.Object, _mapperMock.Object);
     }
 
     [Fact]
@@ -36,9 +46,9 @@ public class EventCategoryServiceTests
             .ReturnsAsync(eventCategories);
         _mapperMock.Setup(m => m.Map<List<EventCategoryDTO>>(eventCategories))
             .Returns(eventCategoryDTOs);
-        
-        var result = await _eventCategoryService.GetAllAsync(CancellationToken.None);
-        
+
+        var result = await _getAllEventCategoriesUseCase.ExecuteAsync(CancellationToken.None);
+
         Assert.NotNull(result);
         Assert.Equal(2, result.Count());
         Assert.Equal("Category 1", result.ElementAt(0).Name);
@@ -55,9 +65,9 @@ public class EventCategoryServiceTests
             .ReturnsAsync(eventCategory);
         _mapperMock.Setup(m => m.Map<EventCategoryDTO>(eventCategory))
             .Returns(eventCategoryDTO);
-        
-        var result = await _eventCategoryService.GetByIdAsync(eventCategory.Id, CancellationToken.None);
-        
+
+        var result = await _getEventCategoryByIdUseCase.ExecuteAsync(eventCategory.Id, CancellationToken.None);
+
         Assert.NotNull(result);
         Assert.Equal(eventCategory.Id, result.Id);
         Assert.Equal("Category 1", result.Name);
@@ -70,9 +80,9 @@ public class EventCategoryServiceTests
 
         _unitOfWorkMock.Setup(uow => uow.EventCategories.GetByIdAsync(eventCategoryId, It.IsAny<CancellationToken>()))
             .ReturnsAsync((EventCategory)null);
-        
-        var result = await _eventCategoryService.GetByIdAsync(eventCategoryId, CancellationToken.None);
-        
+
+        var result = await _getEventCategoryByIdUseCase.ExecuteAsync(eventCategoryId, CancellationToken.None);
+
         Assert.Null(result);
     }
 }

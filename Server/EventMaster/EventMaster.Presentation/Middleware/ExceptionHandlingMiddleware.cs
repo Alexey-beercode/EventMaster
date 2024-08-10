@@ -53,6 +53,12 @@ public class ExceptionHandlingMiddleware
             case AuthorizationException:
                 response.StatusCode = (int)HttpStatusCode.Unauthorized;
                 break;
+            case BadRequestException:
+                response.StatusCode = (int)HttpStatusCode.BadRequest;
+                break;
+            case AlreadyExistsException:
+                response.StatusCode = (int)HttpStatusCode.Conflict;
+                break;
             default:
                 response.StatusCode = (int)HttpStatusCode.InternalServerError;
                 break;
