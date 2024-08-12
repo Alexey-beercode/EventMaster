@@ -2,14 +2,12 @@ using AutoMapper;
 using EventMaster.BLL.DTOs.Implementations.Requests.Event;
 using EventMaster.BLL.DTOs.Implementations.Responses.Event;
 using EventMaster.BLL.Services.Interfaces;
-using EventMaster.BLL.UseCases;
 using EventMaster.BLL.UseCases.Event;
 using EventMaster.DAL.Infrastructure;
 using EventMaster.Domain.Entities;
 using EventMaster.Domain.Models;
 using Microsoft.Extensions.Caching.Memory;
 using Moq;
-using Xunit;
 
 public class EventServiceTests
 {

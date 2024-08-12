@@ -4,14 +4,8 @@ using EventMaster.BLL.Services.Implementation;
 using EventMaster.BLL.UseCases.Role;
 using EventMaster.DAL.Infrastructure;
 using Moq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 using AutoMapper;
 using EventMaster.Domain.Entities;
-using Xunit;
 
 namespace EventMaster.Tests.Services
 {

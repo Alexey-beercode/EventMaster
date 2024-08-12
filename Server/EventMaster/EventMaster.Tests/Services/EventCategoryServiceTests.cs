@@ -1,15 +1,12 @@
 using AutoMapper;
 using EventMaster.BLL.DTOs.Responses.EventCategory;
 using EventMaster.BLL.UseCases;
+using EventMaster.BLL.UseCases.EventCategory;
 using EventMaster.DAL.Infrastructure;
 using EventMaster.Domain.Entities;
 using Moq;
-using Xunit;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using EventMaster.BLL.UseCases.EventCategory;
+
+namespace EventMaster.Tests.Services;
 
 public class EventCategoryServiceTests
 {
