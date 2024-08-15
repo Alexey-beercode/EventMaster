@@ -29,7 +29,7 @@ public class EmailService:IEmailService
 
         using (var client = new SmtpClient())
         {
-            await client.ConnectAsync(_configuration["Email:SmtpServer"], int.Parse(_configuration["Email:SmtpPort"]), false,cancellationToken);
+            await client.ConnectAsync(_configuration["Email:SmtpServer"], int.Parse(_configuration["Email:SmtpPort"]), true, cancellationToken);
             await client.AuthenticateAsync(_configuration["Email:SmtpUser"], _configuration["Email:SmtpPassword"],cancellationToken);
             await client.SendAsync(emailMessage,cancellationToken);
             await client.DisconnectAsync(true,cancellationToken);
